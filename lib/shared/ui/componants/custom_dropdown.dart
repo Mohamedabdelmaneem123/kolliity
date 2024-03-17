@@ -1,9 +1,11 @@
-import 'package:elhamlah_elraqiah/shared/app_size.dart';
-import 'package:elhamlah_elraqiah/shared/constants/colors.dart';
-import 'package:elhamlah_elraqiah/shared/constants/styles.dart';
-import 'package:elhamlah_elraqiah/shared/resources.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../app_size.dart';
+import '../../constants/colors.dart';
+import '../../constants/styles.dart';
+import '../../resources.dart';
 
 class CustomDropdown extends StatelessWidget {
   final Widget? icon;

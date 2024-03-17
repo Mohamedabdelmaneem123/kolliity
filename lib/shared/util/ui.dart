@@ -1,8 +1,10 @@
-import 'package:elhamlah_elraqiah/main.dart';
-import 'package:elhamlah_elraqiah/shared/models/custom_message_model.dart';
-import 'package:elhamlah_elraqiah/shared/ui/componants/custom_app_message.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import '../../main.dart';
+import '../models/custom_message_model.dart';
+import '../ui/componants/custom_app_message.dart';
 
 class UI {
   static push(page, {arguments, context}) async {

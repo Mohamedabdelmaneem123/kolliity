@@ -1,11 +1,14 @@
-import 'package:elhamlah_elraqiah/shared/app_size.dart';
-import 'package:elhamlah_elraqiah/shared/constants/styles.dart';
-import 'package:elhamlah_elraqiah/shared/extentions/padding_extentions.dart';
-import 'package:elhamlah_elraqiah/shared/extentions/string_extensions.dart';
-import 'package:elhamlah_elraqiah/shared/util/app_routes.dart';
-import 'package:elhamlah_elraqiah/shared/util/ui.dart';
+
 import 'package:flutter/material.dart';
-import 'package:elhamlah_elraqiah/shared/ui/componants/custom_button.dart';
+
+import 'package:get/get.dart';
+import 'package:kolliity/shared/extentions/padding_extentions.dart';
+
+import '../app_size.dart';
+import '../constants/styles.dart';
+import '../ui/componants/custom_button.dart';
+import '../util/app_routes.dart';
+import '../util/ui.dart';
 class BackToHome extends StatelessWidget {
   const BackToHome({Key? key}) : super(key: key);
 
@@ -25,14 +28,14 @@ class BackToHome extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("please login".tr(), style: AppStyles.kTextStyle20,),
+            Text("please login".tr, style: AppStyles.kTextStyle20,),
             AppSize.h10.ph,
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
-              child: CustomButton(title: "login".tr(), onClick: () => UI.push(AppRoutes.loginScreen)),
+              child: CustomButton(title: "login".tr, onClick: () => UI.push(AppRoutes.loginScreen)),
             ),
             AppSize.h10.ph,
-            InkWell(onTap:() => UI.pop(),child: Text("Back".tr(), style: AppStyles.kTextStyle14))
+            InkWell(onTap:() => UI.pop(),child: Text("Back".tr, style: AppStyles.kTextStyle14))
           ],
         ),
       ),

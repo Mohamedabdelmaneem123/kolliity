@@ -1,7 +1,9 @@
-import 'package:elhamlah_elraqiah/shared/constants/colors.dart';
-import 'package:elhamlah_elraqiah/shared/constants/styles.dart';
-import 'package:elhamlah_elraqiah/shared/extentions/string_extensions.dart';
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../../constants/colors.dart';
+import '../../constants/styles.dart';
 
 class EmptyData extends StatelessWidget {
   final Color? color;
@@ -10,7 +12,7 @@ class EmptyData extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Center(
-      child: Text("No Data Found".tr(), style: AppStyles.kTextStyle24.copyWith(
+      child: Text("No Data Found".tr, style: AppStyles.kTextStyle24.copyWith(
           color: color
       ), ),
     );

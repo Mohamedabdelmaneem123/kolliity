@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:elhamlah_elraqiah/shared/extentions/optional_strings_extensions.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PrefUtils {
@@ -18,7 +18,7 @@ class PrefUtils {
 
   static Future<Map<String, dynamic>?> getJson(String key) async {
     String? temp = (await getSharedPref()).getString(key);
-    return temp.isNullOrEmpty ? null : jsonDecode(temp!);
+    // return temp.isNullOrEmpty ? null : jsonDecode(temp!);
   }
 
   static Future<bool> setString(String key, String data) async {

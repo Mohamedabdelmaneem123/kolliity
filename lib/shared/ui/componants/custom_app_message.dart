@@ -1,9 +1,12 @@
-import 'package:elhamlah_elraqiah/shared/app_size.dart';
-import 'package:elhamlah_elraqiah/shared/constants/styles.dart';
-import 'package:elhamlah_elraqiah/shared/extentions/padding_extentions.dart';
-import 'package:elhamlah_elraqiah/shared/models/custom_message_model.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:kolliity/shared/extentions/padding_extentions.dart';
+
+
+import '../../app_size.dart';
+import '../../constants/styles.dart';
+import '../../models/custom_message_model.dart';
 
 class CustomAppMessage extends StatelessWidget {
   const CustomAppMessage(

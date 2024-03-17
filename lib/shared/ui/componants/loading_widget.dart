@@ -1,5 +1,7 @@
-import 'package:elhamlah_elraqiah/shared/app_size.dart';
+
 import 'package:flutter/material.dart';
+
+import '../../app_size.dart';
 
 class Loading extends StatelessWidget {
   const Loading({Key? key}) : super(key: key);

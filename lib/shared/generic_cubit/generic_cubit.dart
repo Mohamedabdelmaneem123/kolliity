@@ -1,6 +1,8 @@
 import 'package:bloc/bloc.dart';
-import 'package:elhamlah_elraqiah/shared/models/failure.dart';
+
 import 'package:equatable/equatable.dart';
+
+import '../models/failure.dart';
 
 
 part 'generic_state.dart';

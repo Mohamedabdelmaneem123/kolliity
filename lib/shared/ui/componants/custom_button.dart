@@ -1,8 +1,11 @@
-import 'package:elhamlah_elraqiah/shared/app_size.dart';
-import 'package:elhamlah_elraqiah/shared/constants/colors.dart';
-import 'package:elhamlah_elraqiah/shared/constants/styles.dart';
+
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../app_size.dart';
+import '../../constants/colors.dart';
+import '../../constants/styles.dart';
 
 class CustomButton extends StatelessWidget {
   final String title;

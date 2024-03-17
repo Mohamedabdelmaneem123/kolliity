@@ -1,6 +1,9 @@
-import 'package:elhamlah_elraqiah/shared/app_size.dart';
+
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
+
+import '../app_size.dart';
+
 
 class ShimmerWidget extends StatelessWidget {
   final double? height;

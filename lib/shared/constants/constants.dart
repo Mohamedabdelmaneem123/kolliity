@@ -1,8 +1,11 @@
-import 'package:elhamlah_elraqiah/shared/localization/app_localization.dart';
+
 import 'package:flutter/material.dart';
-import 'package:elhamlah_elraqiah/main.dart';
+
+
+import '../localization/app_localization.dart';
 
 String translate(String key, {BuildContext? context}) {
+  var navigatorKey;
   return AppLocalizations.of(context ?? navigatorKey.currentContext!)
           ?.translate(key) ??
       key;

@@ -8,6 +8,7 @@ import 'features/units.dart';
 
 
 
+GlobalKey<NavigatorState> navigatorKey = GlobalKey();
 void main() async {
   await GetStorage.init();
   runApp(MyApp());

@@ -2,11 +2,13 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:elhamlah_elraqiah/shared/models/failure.dart';
-import 'package:elhamlah_elraqiah/shared/prefs/pref_manager.dart';
-import 'package:elhamlah_elraqiah/shared/util/app_routes.dart';
-import 'package:elhamlah_elraqiah/shared/util/ui.dart';
+
 import 'package:logger/logger.dart';
+
+import '../models/failure.dart';
+import '../prefs/pref_manager.dart';
+import '../util/app_routes.dart';
+import '../util/ui.dart';
 
 class Network {
   static const String devBaseUrl = 'https://alraqiah.com/api/';
