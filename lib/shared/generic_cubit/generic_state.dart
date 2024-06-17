@@ -36,3 +36,5 @@ class GenericErrorState<T> extends GenericCubitState<T> {
   @override
   List<Object> get props => [changed];
 }
+
+

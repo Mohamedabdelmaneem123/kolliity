@@ -3,11 +3,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:logger/logger.dart';
 
+import '../../features/login/model/usermodel.dart';
 import 'pref_keys.dart';
 import 'pref_utils.dart';
 
 class PrefManager {
-  static UserModel ? currentUser;
+  static UserModel? currentUser;
 
   static Future init() async {
     /// User
@@ -17,7 +18,7 @@ class PrefManager {
   /// SETTERS
   static Future setCurrentUser(UserModel? user) async {
     currentUser = user;
-    // await PrefUtils.setJson(PrefKeys.currentUser, user?.toJson());
+    await PrefUtils.setJson(PrefKeys.currentUser, user?.toJson());
   }
 
   static Future clearUserData() async {
@@ -28,18 +29,13 @@ class PrefManager {
   /// GETTERS
   static Future<UserModel?> getCurrentUser() async {
     Map<String, dynamic>? userData =
-        await PrefUtils.getJson(PrefKeys.currentUser);
+    await PrefUtils.getJson(PrefKeys.currentUser);
     UserModel? temp;
     if (userData != null) {
-      // temp = UserModel.fromJson(userData);
-      // Logger().d("user : ${temp.toJson()}");
+      temp = UserModel.fromJson(userData);
+      Logger().d("user : ${temp.toJson()}");
     }
     return temp;
   }
 }
 
-class UserModel {
-  String? token;
-  String? tokenType;
-  User? user;
-}

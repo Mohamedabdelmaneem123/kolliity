@@ -5,7 +5,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:kolliity/features/profiledata-eng.dart';
 import 'package:kolliity/features/theme-service.dart';
 import 'package:kolliity/features/units.dart';
+import 'package:kolliity/shared/Dark_mode/AppCubit.dart';
+import 'package:provider/provider.dart';
+import 'package:kolliity/shared/extentions/string_extensions.dart';
 
+import '../shared/constants/themes.dart';
+import '../shared/util/app_routes.dart';
+import '../shared/util/ui.dart';
 import 'editlang_eng.dart';
 
 
@@ -113,7 +119,7 @@ class Setting_Eng extends StatelessWidget {
                           width: 98 * fem,
                           height: 31 * fem,
                           child: Text(
-                            'Settings',
+                            'settings'.tr(),
                             style: SafeGoogleFont(
                               'Inter',
                               fontSize: 25 * ffem,
@@ -132,10 +138,7 @@ class Setting_Eng extends StatelessWidget {
                       top: 70 * fem,
                       child: GestureDetector(
                         onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) {
-                            return Profiledata_Eng();
-                          }));
+                          UI.push(AppRoutes.profileData);
                         },
                         child: Container(
                           child: Align(
@@ -186,15 +189,12 @@ class Setting_Eng extends StatelessWidget {
                       top: 244 * fem,
                       child: GestureDetector(
                         onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) {
-                            return Profiledata_Eng();
-                          }));
+                          UI.push(AppRoutes.profileData);
                         },
                         child: Container(
                           padding: EdgeInsets.fromLTRB(
                               34 * fem, 10 * fem, 34 * fem, 10 * fem),
-                          width: 193 * fem,
+                          width: 250 * fem,
                           height: 60 * fem,
                           decoration: BoxDecoration(
                             color: Color(0xffffffff),
@@ -229,7 +229,7 @@ class Setting_Eng extends StatelessWidget {
                               ),
                               Text(
                                 // profileyB4 (275:1288)
-                                'Profile',
+                                'My profile'.tr(),
                                 style: SafeGoogleFont(
                                   'Inter',
                                   fontSize: 25 * ffem,
@@ -314,7 +314,7 @@ class Setting_Eng extends StatelessWidget {
                               child: IconButton(
                                 icon: Icon(Icons.dark_mode),
                                 onPressed: () {
-                                  ThemeService().chandeTheme();
+                                  ThemeProvider().isDarkMode;
                                 },
                               )),
                         ],
@@ -323,7 +323,7 @@ class Setting_Eng extends StatelessWidget {
                     Container(
                       // autogroup54aa3ie (3AxuAMebWaFRhVFU6n54Aa)
                       padding: EdgeInsets.fromLTRB(
-                          11 * fem, 20 * fem, 11 * fem, 142 * fem),
+                          11 * fem, 20 * fem, 11 * fem, 117 * fem),
                       width: 277 * fem,
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
@@ -339,7 +339,7 @@ class Setting_Eng extends StatelessWidget {
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
+                        children:[
                           GestureDetector(
                             onTap: () {
                               Navigator.push(context,
@@ -352,7 +352,7 @@ class Setting_Eng extends StatelessWidget {
                               margin: EdgeInsets.fromLTRB(
                                   0 * fem, 0 * fem, 0 * fem, 36 * fem),
                               child: Text(
-                                'Language',
+                                'language'.tr(),
                                 textAlign: TextAlign.right,
                                 style: SafeGoogleFont(
                                   'Inter',
@@ -365,19 +365,34 @@ class Setting_Eng extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Text(
-                            // display1Yz (272:1161)
-                            'Display',
-                            textAlign: TextAlign.right,
-                            style: SafeGoogleFont(
-                              'Inter',
-                              fontSize: 20 * ffem,
-                              fontWeight: FontWeight.w600,
-                              height: 1.2272726059 * ffem / fem,
-                              letterSpacing: -0.4 * fem,
-                              color: Color(0xff013267),
-                            ),
+                          Row(
+                            children: <Widget>[
+                              Text(
+                                // display1Yz (272:1161)
+                                'Display'.tr(),
+                                textAlign: TextAlign.right,
+                                style: SafeGoogleFont(
+                                  'Inter',
+                                  fontSize: 20 * ffem,
+                                  fontWeight: FontWeight.w600,
+                                  height: 1.2272726059 * ffem / fem,
+                                  letterSpacing: -0.4 * fem,
+                                  color: Color(0xff013267),
+                                ),
+                              ),
+                              const Spacer(),
+                              Switch(
+                                value: Appcubiit.get(context).isdark,
+                                // Provider.of<ThemeProvider>(context).isDarkMode,
+                                onChanged: (value) {
+                                  Appcubiit.get(context).changemode();
+                                  // Provider.of<ThemeProvider>(context, listen: false).changemode();
+                                },
+                              ),
+                            ],
                           ),
+
+
                         ],
                       ),
                     ),

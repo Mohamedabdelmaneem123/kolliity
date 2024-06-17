@@ -24,6 +24,9 @@ class GenericCubit<T> extends Cubit<GenericCubitState<T>> {
   }
 
   onErrorState(Failure responseError) {
-    emit(GenericErrorState<T>(responseError: responseError, changed: !state.changed, data: state.data));
+    emit(GenericErrorState<T>(responseError: responseError,
+        changed: !state.changed,
+        data: state.data));
   }
+
 }

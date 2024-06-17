@@ -4,8 +4,12 @@ import 'dart:ui';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kolliity/features/profiledata-eng.dart';
 import 'package:kolliity/features/units.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import '../shared/util/app_routes.dart';
+import '../shared/util/ui.dart';
 import 'nav-eng.dart';
+import 'package:kolliity/shared/extentions/string_extensions.dart';
 
 
 class Editprofile_Eng extends StatefulWidget {
@@ -15,6 +19,22 @@ class Editprofile_Eng extends StatefulWidget {
 
 class _Editprofile_EngState extends State<Editprofile_Eng> {
   final _textEditingController = TextEditingController();
+  String? username;
+  String? name;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUsername();
+  }
+
+  Future<void> _loadUsername() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      username = prefs.getString('username');
+      name = prefs.getString('name');
+    });
+  }
   @override
   Widget build(BuildContext context) {
     double baseWidth = 430;
@@ -102,10 +122,7 @@ class _Editprofile_EngState extends State<Editprofile_Eng> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) {
-                                return Profiledata_Eng();
-                              }));
+                              UI.push(AppRoutes.profileData);
                             },
                             child: Container(
                               // vectoraYW (145:211)
@@ -177,7 +194,16 @@ class _Editprofile_EngState extends State<Editprofile_Eng> {
                             // lorem123nHC (145:208)
                             margin: EdgeInsets.fromLTRB(
                                 0 * fem, 0 * fem, 4 * fem, 0 * fem),
-                            child: Text(
+                            child: username != null
+                                ? Text('$username', style: SafeGoogleFont(
+                              'Inter',
+                              fontSize: 19 * ffem,
+                              fontWeight: FontWeight.w400,
+                              height: 1.2272726406 * ffem / fem,
+                              letterSpacing: -0.44 * fem,
+                              color: Color(0xff000000),
+                            ))
+                               :Text(
                               '@lorem_123',
                               style: SafeGoogleFont(
                                 'Inter',
@@ -215,7 +241,7 @@ class _Editprofile_EngState extends State<Editprofile_Eng> {
                               keyboardType: TextInputType.text,
                               validator: (String? value) {
                                 if (value?.isEmpty ?? true) {
-                                  return "من فضلك ادخل الاسم";
+                                  return "من فضلك ادخل الاسم".tr();
                                 }
                                 return null;
                               },
@@ -245,7 +271,16 @@ class _Editprofile_EngState extends State<Editprofile_Eng> {
                               keyboardType: TextInputType.text,
                               validator: (String? value) {
                                 if (value?.isEmpty ?? true) {
-                                  return "من فضلك ادخل اسم المستخدم";
+                                  username != null
+                                  ? Text('$username', style: SafeGoogleFont(
+                                    'Inter',
+                                    fontSize: 19 * ffem,
+                                    fontWeight: FontWeight.w400,
+                                    height: 1.2272726406 * ffem / fem,
+                                    letterSpacing: -0.44 * fem,
+                                    color: Color(0xff000000),
+                                  ))
+                                  : Text( "من فضلك ادخل اسم المستخدم");
                                 }
                                 return null;
                               },

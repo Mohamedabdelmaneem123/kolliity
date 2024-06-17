@@ -25,8 +25,8 @@ class CustomButton extends StatelessWidget {
     this.textSize,
     this.radius,
     this.width = double.infinity,
-    this.btnColor = AppColors.kMainColor,
-    this.textColor = Colors.white,
+    this.btnColor = AppColors.kGreyColor9D9,
+    this.textColor = Colors.blue,
     this.textStyle,
     super.key,
   });

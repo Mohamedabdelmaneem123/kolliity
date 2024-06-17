@@ -1,142 +1,632 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/gestures.dart';
 import 'dart:ui';
+import 'package:flutter_svg/flutter_svg.dart';
+
 import 'package:google_fonts/google_fonts.dart';
-import 'package:kolliity/features/profiledata-eng.dart';
-import 'package:kolliity/features/units.dart';
 
-import 'nav-eng.dart';
-
-
-class StudentCourses_Eng extends StatelessWidget {
+class StudentsCourses1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    double baseWidth = 430;
-    double fem = MediaQuery.of(context).size.width / baseWidth;
-    double ffem = fem * 0.97;
-    return Scaffold(
-      drawer: NavBar_Eng(),
-      appBar: AppBar(
-        toolbarHeight: 40,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 130.0),
-            child: IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.home),
-              iconSize: 30,
+    return
+      Container(
+        decoration: BoxDecoration(
+          color: Color(0xFFECECEC),
+        ),
+        child: Container(
+          padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
+          child: Stack(
+            clipBehavior: Clip.none,
+            children: [
+            SizedBox(
+            width: double.infinity,
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+            Container(
+            margin: EdgeInsets.fromLTRB(15, 0, 16, 7),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  margin: EdgeInsets.fromLTRB(0, 0, 0, 8),
+                  child: SizedBox(
+                    width: 26,
+                    height: 22,
+                    child: SvgPicture.asset(
+                      'assets/vectors/vector_34_x2.svg',
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.fromLTRB(0, 2, 0, 0),
+                  child: SizedBox(
+                    width: 30,
+                    height: 28,
+                    child: SvgPicture.asset(
+                      'assets/vectors/vector_414_x2.svg',
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.fromLTRB(0, 2, 0, 9),
+                  child: SizedBox(
+                    width: 19,
+                    height: 19,
+                    child: SvgPicture.asset(
+                      'assets/vectors/vector_388_x2.svg',
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.search),
-            iconSize: 30,
-          )
-        ],
-      ),
-      body: Container(
-        width: double.infinity,
-        child: Container(
-          // studentscoursesMW6 (281:1683)
-          padding: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 0 * fem),
-          width: double.infinity,
-          decoration: BoxDecoration(
-            color: Color(0xffebebeb),
+          Container(
+            margin: EdgeInsets.fromLTRB(0, 0, 0, 21),
+            decoration: BoxDecoration(
+              color: Color(0xFFFFFFFF),
+              boxShadow: [
+                BoxShadow(
+                  color: Color(0xFF000000),
+                  offset: Offset(0, 3),
+                  blurRadius: 2.5,
+                ),
+              ],
+            ),
+            child: Container(
+              width: 430,
+              height: 1,
+            ),
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                // line1upS (281:1688)
-                margin:
-                    EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 15 * fem),
-                width: double.infinity,
-                height: 1 * fem,
-                decoration: BoxDecoration(
-                  color: Color(0xffffffff),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0xff000000),
-                      offset: Offset(0 * fem, 3 * fem),
-                      blurRadius: 2.5 * fem,
+          Container(
+            margin: EdgeInsets.fromLTRB(26, 0, 26, 31),
+            child: Align(
+              alignment: Alignment.topRight,
+              child: SizedBox(
+                width: 244,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.fromLTRB(0, 2, 17, 0),
+                      child: SizedBox(
+                        width: 204,
+                        child: Text(
+                          'Courses',
+                          style: GoogleFonts.getFont(
+                            'Inter',
+                            fontWeight: FontWeight.w600,
+                            fontSize: 28,
+                            height: 1.2,
+                            letterSpacing: -0.6,
+                            color: Color(0xFF000000),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.fromLTRB(0, 0, 0, 15),
+                      child: SizedBox(
+                        width: 23,
+                        height: 21,
+                        child: SvgPicture.asset(
+                          'assets/vectors/vector_239_x2.svg',
+                        ),
+                      ),
                     ),
                   ],
                 ),
               ),
-              Container(
-                  // autogrouptkgaQmC (3AxKeepdN5XFsEBpuLTKgA)
-                  padding: EdgeInsets.fromLTRB(
-                      15 * fem, 6 * fem, 18 * fem, 491 * fem),
-                  width: double.infinity,
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          // autogrouplpx88x6 (3AxHsTHamXGTjhz66BLpX8)
-                          margin: EdgeInsets.fromLTRB(
-                              145 * fem, 0 * fem, 8 * fem, 30 * fem),
-                          width: double.infinity,
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                // coursesGHc (281:1732)
-                                margin: EdgeInsets.fromLTRB(
-                                    0 * fem, 2 * fem, 111 * fem, 0 * fem),
-                                child: Text(
-                                  'Courses',
-                                  style: SafeGoogleFont(
-                                    'Inter',
-                                    fontSize: 28 * ffem,
-                                    fontWeight: FontWeight.w600,
-                                    height: 1.2272725786 * ffem / fem,
-                                    letterSpacing: -0.56 * fem,
-                                    color: Color(0xff000000),
-                                  ),
-                                ),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  Navigator.push(context,
-                                      MaterialPageRoute(builder: (context) {
-                                    return Profiledata_Eng();
-                                  }));
-                                },
-                                child: Container(
-                                  // vectorZGi (281:1694)
-                                  width: 23 * fem,
-                                  height: 21 * fem,
-                                  child: Image.asset(
-                                    'assets/mobile-app/images/vector-PCa.png',
-                                    width: 23 * fem,
-                                    height: 21 * fem,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          // studentscoursesthistermHyQ (281:1707)
-                          margin: EdgeInsets.fromLTRB(
-                              0 * fem, 0 * fem, 151 * fem, 6 * fem),
-                          child: Text(
-                            'Student’s courses this term',
-                            style: SafeGoogleFont(
-                              'Inter',
-                              fontSize: 18 * ffem,
-                              fontWeight: FontWeight.w600,
-                              height: 1.2272726695 * ffem / fem,
-                              letterSpacing: -0.36 * fem,
-                              color: Color(0xff013267),
-                            ),
-                          ),
-                        ),
-                      ])),
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.fromLTRB(23, 0, 23, 9),
+            child: Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                'Student’s courses this term',
+                style: GoogleFonts.getFont(
+                  'Inter',
+                  fontWeight: FontWeight.w600,
+                  fontSize: 18,
+                  height: 1.2,
+                  letterSpacing: -0.4,
+                  color: Color(0xFF013267),
+                ),
+              ),
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.fromLTRB(15, 0, 18, 27),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+            Expanded(
+            child: Container(
+            margin: EdgeInsets.fromLTRB(0, 0, 14, 0),
+            decoration: BoxDecoration(
+              color: Color(0xFFFFFFFF),
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(25),
+                topRight: Radius.circular(24),
+                bottomRight: Radius.circular(12),
+                bottomLeft: Radius.circular(12),
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: Color(0x40000000),
+                  offset: Offset(0, 4),
+                  blurRadius: 2,
+                ),
+              ],
+            ),
+            child: Container(
+              padding: EdgeInsets.fromLTRB(6, 85, 19.6, 22),
+              child: Stack(
+                clipBehavior: Clip.none,
+                children: [
+              Text(
+              'Computer Vision',
+              style: GoogleFonts.getFont(
+                'Inter',
+                fontWeight: FontWeight.w600,
+                fontSize: 11,
+                height: 1.6,
+                letterSpacing: 0.1,
+                color: Color(0xFF000000),
+              ),
+            ),
+            Positioned(
+              left: 2,
+              bottom: -14,
+              child: SizedBox(
+                height: 17,
+                child: Text(
+                  'CS180',
+                  style: GoogleFonts.getFont(
+                    'Inter',
+                    fontWeight: FontWeight.w600,
+                    fontSize: 11,
+                    height: 1.6,
+                    letterSpacing: 0.1,
+                    color: Color(0xFF484848),
+                  ),
+                ),
+              ),
+            ),
             ],
           ),
         ),
       ),
+    ),
+    Expanded(
+    child: Container(
+    margin: EdgeInsets.fromLTRB(0, 0, 15, 1),
+    decoration: BoxDecoration(
+    color: Color(0xFFFFFFFF),
+    borderRadius: BorderRadius.only(
+    topLeft: Radius.circular(25),
+    topRight: Radius.circular(24),
+    bottomRight: Radius.circular(12),
+    bottomLeft: Radius.circular(12),
+    ),
+    boxShadow: [
+    BoxShadow(
+    color: Color(0x40000000),
+    offset: Offset(0, 4),
+    blurRadius: 2,
+    ),
+    ],
+    ),
+    child: Container(
+    padding: EdgeInsets.fromLTRB(5, 84, 5, 22),
+    child: Stack(
+    clipBehavior: Clip.none,
+    children: [
+    Text(
+    'Intro to CS',
+    style: GoogleFonts.getFont(
+    'Inter',
+    fontWeight: FontWeight.w600,
+    fontSize: 11,
+    height: 1.6,
+    letterSpacing: 0.1,
+    color: Color(0xFF000000),
+    ),
+    ),
+    Positioned(
+    left: 2,
+    bottom: -14,
+    child: SizedBox(
+    height: 17,
+    child: Text(
+    'CS180',
+    style: GoogleFonts.getFont(
+    'Inter',
+    fontWeight: FontWeight.w600,
+    fontSize: 11,
+    height: 1.6,
+    letterSpacing: 0.1,
+    color: Color(0xFF484848),
+    ),
+    ),
+    ),
+    ),
+    ],
+    ),
+    ),
+    ),
+    ),
+    Expanded(
+    child: Container(
+    decoration: BoxDecoration(
+    color: Color(0xFFFFFFFF),
+    borderRadius: BorderRadius.only(
+    topLeft: Radius.circular(25),
+    topRight: Radius.circular(24),
+    bottomRight: Radius.circular(12),
+    bottomLeft: Radius.circular(12),
+    ),
+    boxShadow: [
+    BoxShadow(
+    color: Color(0x40000000),
+    offset: Offset(0, 4),
+    blurRadius: 2,
+    ),
+    ],
+    ),
+    child: Container(
+    padding: EdgeInsets.fromLTRB(6, 85, 6, 22),
+    child: Stack(
+    clipBehavior: Clip.none,
+    children: [
+    Text(
+    'Intro to CS',
+    style: GoogleFonts.getFont(
+    'Inter',
+    fontWeight: FontWeight.w600,
+    fontSize: 11,
+    height: 1.6,
+    letterSpacing: 0.1,
+    color: Color(0xFF000000),
+    ),
+    ),
+    Positioned(
+    left: 1,
+    bottom: -14,
+    child: SizedBox(
+    height: 17,
+    child: Text(
+    'CS180',
+    style: GoogleFonts.getFont(
+    'Inter',
+    fontWeight: FontWeight.w600,
+    fontSize: 11,
+    height: 1.6,
+    letterSpacing: 0.1,
+    color: Color(0xFF484848),
+    ),
+    ),
+    ),
+    ),
+    ],
+    ),
+    ),
+    ),
+    ),
+    ],
+    ),
+    ),
+    Container(
+    margin: EdgeInsets.fromLTRB(15, 0, 18, 0),
+    child: Row(
+    mainAxisAlignment: MainAxisAlignment.start,
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+    Expanded(
+    child: Container(
+    margin: EdgeInsets.fromLTRB(0, 1, 14, 0),
+    decoration: BoxDecoration(
+    color: Color(0xFFFFFFFF),
+    borderRadius: BorderRadius.only(
+    topLeft: Radius.circular(25),
+    topRight: Radius.circular(24),
+    bottomRight: Radius.circular(12),
+    bottomLeft: Radius.circular(12),
+    ),
+    boxShadow: [
+    BoxShadow(
+    color: Color(0x40000000),
+    offset: Offset(0, 4),
+    blurRadius: 2,
+    ),
+    ],
+    ),
+    child: Container(
+    padding: EdgeInsets.fromLTRB(6, 85, 19.6, 22),
+    child: Stack(
+    clipBehavior: Clip.none,
+    children: [
+    Text(
+    'Computer Vision',
+    style: GoogleFonts.getFont(
+    'Inter',
+    fontWeight: FontWeight.w600,
+    fontSize: 11,
+    height: 1.6,
+    letterSpacing: 0.1,
+    color: Color(0xFF000000),
+    ),
+    ),
+    Positioned(
+    left: 2,
+    bottom: -14,
+    child: SizedBox(
+    height: 17,
+    child: Text(
+    'CS180',
+    style: GoogleFonts.getFont(
+    'Inter',
+    fontWeight: FontWeight.w600,
+    fontSize: 11,
+    height: 1.6,
+    letterSpacing: 0.1,
+    color: Color(0xFF484848),
+    ),
+    ),
+    ),
+    ),
+    ],
+    ),
+    ),
+    ),
+    ),
+    Expanded(
+    child: Container(
+    margin: EdgeInsets.fromLTRB(0, 1, 15, 1),
+    decoration: BoxDecoration(
+    color: Color(0xFFFFFFFF),
+    borderRadius: BorderRadius.only(
+    topLeft: Radius.circular(25),
+    topRight: Radius.circular(24),
+    bottomRight: Radius.circular(12),
+    bottomLeft: Radius.circular(12),
+    ),
+    boxShadow: [
+    BoxShadow(
+    color: Color(0x40000000),
+    offset: Offset(0, 4),
+    blurRadius: 2,
+    ),
+    ],
+    ),
+    child: Container(
+    padding: EdgeInsets.fromLTRB(5, 84, 5, 22),
+    child: Stack(
+    clipBehavior: Clip.none,
+    children: [
+    Text(
+    'Intro to CS',
+    style: GoogleFonts.getFont(
+    'Inter',
+    fontWeight: FontWeight.w600,
+    fontSize: 11,
+    height: 1.6,
+    letterSpacing: 0.1,
+    color: Color(0xFF000000),
+    ),
+    ),
+    Positioned(
+    left: 2,
+    bottom: -14,
+    child: SizedBox(
+    height: 17,
+    child: Text(
+    'CS180',
+    style: GoogleFonts.getFont(
+    'Inter',
+    fontWeight: FontWeight.w600,
+    fontSize: 11,
+    height: 1.6,
+    letterSpacing: 0.1,
+    color: Color(0xFF484848),
+    ),
+    ),
+    ),
+    ),
+    ],
+    ),
+    ),
+    ),
+    ),
+    Expanded(
+    child: Container(
+    margin: EdgeInsets.fromLTRB(0, 0, 0, 1),
+    decoration: BoxDecoration(
+    color: Color(0xFFFFFFFF),
+    borderRadius: BorderRadius.only(
+    topLeft: Radius.circular(25),
+    topRight: Radius.circular(24),
+    bottomRight: Radius.circular(12),
+    bottomLeft: Radius.circular(12),
+    ),
+    boxShadow: [
+    BoxShadow(
+    color: Color(0x40000000),
+    offset: Offset(0, 4),
+    blurRadius: 2,
+    ),
+    ],
+    ),
+    child: Container(
+    padding: EdgeInsets.fromLTRB(6, 85, 6, 22),
+    child: Stack(
+    clipBehavior: Clip.none,
+    children: [
+    Text(
+    'Intro to CS',
+    style: GoogleFonts.getFont(
+    'Inter',
+    fontWeight: FontWeight.w600,
+    fontSize: 11,
+    height: 1.6,
+    letterSpacing: 0.1,
+    color: Color(0xFF000000),
+    ),
+    ),
+    Positioned(
+    left: 1,
+    bottom: -14,
+    child: SizedBox(
+    height: 17,
+    child: Text(
+    'CS180',
+    style: GoogleFonts.getFont(
+    'Inter',
+    fontWeight: FontWeight.w600,
+    fontSize: 11,
+    height: 1.6,
+    letterSpacing: 0.1,
+    color: Color(0xFF484848),
+    ),
+    ),
+    ),
+    ),
+    ],
+    ),
+    ),
+    ),
+    ),
+    ],
+    ),
+    ),
+    ],
+    ),
+    ),
+    Positioned(
+    left: 15,
+    top: 163,
+    child: Container(
+    decoration: BoxDecoration(
+    borderRadius: BorderRadius.circular(22),
+    color: Color(0xFFD9D9D9),
+    image: DecorationImage(
+    fit: BoxFit.cover,
+    image: AssetImage(
+    'assets/images/rectangle_29.jpeg',
+    ),
+    ),
+    ),
+    child: Container(
+    width: 123,
+    height: 87,
+    ),
+    ),
+    ),
+    Positioned(
+    left: 15,
+    top: 315,
+    child: Container(
+    decoration: BoxDecoration(
+    borderRadius: BorderRadius.circular(22),
+    color: Color(0xFFD9D9D9),
+    image: DecorationImage(
+    fit: BoxFit.cover,
+    image: AssetImage(
+    'assets/images/rectangle_29.jpeg',
+    ),
+    ),
+    ),
+    child: Container(
+    width: 123,
+    height: 87,
+    ),
+    ),
+    ),
+    Positioned(
+    top: 163,
+    child: Container(
+    decoration: BoxDecoration(
+    borderRadius: BorderRadius.circular(26),
+    color: Color(0xFFD9D9D9),
+    image: DecorationImage(
+    fit: BoxFit.cover,
+    image: AssetImage(
+    'assets/images/rectangle_34.jpeg',
+    ),
+    ),
+    ),
+    child: Container(
+    width: 124,
+    height: 86,
+    ),
+    ),
+    ),
+    Positioned(
+    top: 315,
+    child: Container(
+    decoration: BoxDecoration(
+    borderRadius: BorderRadius.circular(26),
+    color: Color(0xFFD9D9D9),
+    image: DecorationImage(
+    fit: BoxFit.cover,
+    image: AssetImage(
+    'assets/images/rectangle_34.jpeg',
+    ),
+    ),
+    ),
+    child: Container(
+    width: 124,
+    height: 86,
+    ),
+    ),
+    ),
+    Positioned(
+    right: 18,
+    top: 163,
+    child: Container(
+    decoration: BoxDecoration(
+    borderRadius: BorderRadius.circular(25),
+    color: Color(0xFFD9D9D9),
+    image: DecorationImage(
+    fit: BoxFit.cover,
+    image: AssetImage(
+    'assets/images/rectangle_391.jpeg',
+    ),
+    ),
+    ),
+    child: Container(
+    width: 125,
+    height: 87,
+    ),
+    ),
+    ),
+    Positioned(
+    right: 18,
+    top: 314,
+    child: Container(
+    decoration: BoxDecoration(
+    borderRadius: BorderRadius.circular(25),
+    color: Color(0xFFD9D9D9),
+    image: DecorationImage(
+    fit: BoxFit.cover,
+    image: AssetImage(
+    'assets/images/rectangle_391.jpeg',
+    ),
+    ),
+    ),
+    child: Container(
+    width: 125,
+    height: 87,
+    ),
+    ),
+    ),
+    ],
+    ),
+    ),
     );
   }
 }

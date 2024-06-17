@@ -7,6 +7,8 @@ import 'package:kolliity/features/profiledata-eng.dart';
 import 'package:kolliity/features/profiledata.dart';
 import 'package:kolliity/features/setting.dart';
 import 'package:kolliity/features/units.dart';
+import 'package:kolliity/shared/util/app_routes.dart';
+import 'package:kolliity/shared/util/ui.dart';
 
 import 'nav.dart';
 
@@ -175,10 +177,11 @@ class EditLanguage extends StatelessWidget {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) {
-                              return Profiledata_Eng();
-                            }));
+                            UI.push(AppRoutes.profileData);
+                            // Navigator.push(context,
+                            //     MaterialPageRoute(builder: (context) {
+                            //   return Profiledata_Eng();
+                            // }));
                           },
                           child: Container(
                             // autogroupr29khNN (3Av7PkhNEmngRDFaGyr29k)

@@ -11,7 +11,7 @@ import '../util/app_routes.dart';
 import '../util/ui.dart';
 
 class Network {
-  static const String devBaseUrl = 'https://alraqiah.com/api/';
+  static const String devBaseUrl = 'http://kollity.runasp.net/api/';
   static const String baseUrl = devBaseUrl;
 
   static final Dio _dio = Dio();
@@ -25,16 +25,23 @@ class Network {
       Response response = await _dio.post(
         baseUrl + endPoint,
         data: FormData.fromMap(data!),
+
         options: PrefManager.currentUser?.token != null
             ? Options(
                 headers: {
                   "Authorization":
                       "Bearer ${PrefManager.currentUser?.token}",
-                  "Content-Type": "application/json",
                   "Accept": "application/json",
+                  "content-type": "application/json"
                 },
               )
-            : null,
+            : Options(
+          headers: {
+            "Accept": "application/json",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Content-Type": "application/json;charset=utf-8"
+          },
+        ),
       );
 
       Logger().d(response.data);

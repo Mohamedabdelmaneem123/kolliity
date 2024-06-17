@@ -2,10 +2,11 @@
 import 'package:flutter/material.dart';
 
 
+import '../../main.dart';
 import '../localization/app_localization.dart';
 
 String translate(String key, {BuildContext? context}) {
-  var navigatorKey;
+
   return AppLocalizations.of(context ?? navigatorKey.currentContext!)
           ?.translate(key) ??
       key;
