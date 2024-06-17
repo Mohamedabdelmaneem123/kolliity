@@ -1,7 +1,7 @@
 class EndPoints {
   static const String login = "user/login";
   static const String logout = "logout";
-  static const String home = "Student/2adc6c7d-904a-40d0-3076-08dc2f249cd2/profile";
+  static const String home = "Student/0af352bf-df41-4702-306e-08dc2f249cd2/profile";
   static const String checkUserName = "checkUserName";
   static const String checkPassword = "checkPassword";
   static const String faq = "faq";

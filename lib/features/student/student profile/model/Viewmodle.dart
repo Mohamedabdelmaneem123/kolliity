@@ -12,7 +12,7 @@ class HomeModel {
 
   HomeRepository repository = HomeRepository();
   GenericCubit<Map<String, dynamic>?> homeCubit = GenericCubit(null);
-  GenericCubit<Profile> profile = GenericCubit(Profile());
+  GenericCubit<Profile> profile = GenericCubit(Profile as Profile);
 
 
 

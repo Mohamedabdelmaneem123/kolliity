@@ -1,8 +1,4 @@
 
-
-
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -56,7 +52,6 @@ class _Login_EngState extends State<Login_Eng> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-
                     Container(
                       // autogroupzbolz9t (3AuxzaXTSmNu4TJmdTZboL)
                       padding:
@@ -289,17 +284,17 @@ class _Login_EngState extends State<Login_Eng> {
                                 UI.showCustomMessage(
                                     state.responseError?.data['message'] ?? "check password and user name");
                               } else if (state is GenericUpdatedState) {
+                                print("state.data");
+                                print(state.data);
                                 UserModel user =
-                                UserModel.fromJson(state.data!["data"]);
+                                UserModel.fromJson(state.data!);
                                 PrefManager.setCurrentUser(user);
                                 UI.pushWithRemove(
                                     AppRoutes.profileData);
                               }
                             },
                             builder: (context, state) {
-                              return state is GenericLoadingState
-                                  ? const Loading()
-                                  : CustomButton(
+                              return CustomButton(
                                 title: "login",
                                 width: 150.sp,
                                 textColor: AppColors.kBlackColor,
@@ -326,5 +321,3 @@ class _Login_EngState extends State<Login_Eng> {
   }
 
 }
-
-

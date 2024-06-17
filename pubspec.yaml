@@ -107,6 +107,7 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - assets/website/images/vector.png
+    - assets/files/profile-images/545938b5-dcc2-4387-99c5-c94f39a49566.png
     - assets/website/images/vector-hHg.png
     - assets/website/images/rectangle-36-bg.png
     - assets/website/images/vector-WMk.png

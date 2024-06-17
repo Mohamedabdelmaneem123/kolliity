@@ -4,22 +4,18 @@
 
 import 'dart:convert';
 
-Profile profileFromJson(String str) => Profile.fromJson(json.decode(str));
-
-String profileToJson(Profile data) => json.encode(data.toJson());
-
 class Profile {
-  String? id;
-  String? userName;
-  String? fullNameInArabic;
-  String? code;
+  String id;
+  String userName;
+  String fullNameInArabic;
+  String code;
   dynamic profileImage;
 
   Profile({
-    this.id,
-     this.userName,
-     this.fullNameInArabic,
-     this.code,
+    required this.id,
+     required this.userName,
+     required this.fullNameInArabic,
+     required this.code,
     this.profileImage,
   });
 

@@ -25,8 +25,8 @@ class LoginViewModel {
     loginCubit.onLoadingState();
     try {
       final result = await repository.login({
-          "username": username.text.trim(),
-          "password": password.text.trim(),
+        "username": username.text.trim(),
+        "password": password.text.trim(),
       });
       loginCubit.onUpdateData(result);
     } on Failure catch (failure) {

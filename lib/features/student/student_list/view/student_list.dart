@@ -1481,23 +1481,37 @@ class _StudentListState extends State<StudentList> {
     }
   }
 
+
+
+  void _removeStudent(Student student) {
+    setState(() {
+      students.remove(student);
+      _searchStudent(searchController.text); // Update filtered list based on current search query
+    });
+  }
+
+  void _addStudent(Student student) {
+    setState(() {
+      students.add(student);
+      _searchStudent(searchController.text); // Update filtered list based on current search query
+    });
+  }
+
+  void _showAddStudentDialog() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AddNewStudent(onAdd: _addStudent);
+      },
+    );
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(actions: [
-        IconButton(onPressed: (){
-          showModalBottomSheet(
-            context: context,
-            isScrollControlled: true,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(AppSize.r30),
-                topRight: Radius.circular(AppSize.r30),
-              ),
-            ),
-            builder: (_) =>  AddNewStudent(),
-          );
-        },
+        IconButton(onPressed: _showAddStudentDialog,
             icon: Icon(Icons.add))
       ],
         title: const Center(
@@ -1528,6 +1542,9 @@ class _StudentListState extends State<StudentList> {
                     },
                   ),
                 ),
+                onChanged: (value) {
+                  _searchStudent(value);
+                },
               ),
             ),
           ),
@@ -1535,7 +1552,10 @@ class _StudentListState extends State<StudentList> {
             child: ListView.builder(
               itemCount: filteredStudents.length,
               itemBuilder: (context, index) {
-                return StudentListItem(student: filteredStudents[index]);
+                return StudentListItem(student: filteredStudents[index],
+                  onRemove: _removeStudent,
+                );
+
               },
             ),
           ),
@@ -1549,8 +1569,9 @@ class _StudentListState extends State<StudentList> {
 
 class StudentListItem extends StatelessWidget {
   final Student student;
+  final Function(Student) onRemove;
 
-  StudentListItem({required this.student});
+  StudentListItem({required this.student,required this.onRemove});
 
   @override
   Widget build(BuildContext context) {
@@ -1590,6 +1611,7 @@ class StudentListItem extends StatelessWidget {
                         Flexible(
                           child: ElevatedButton(
                             onPressed: () {
+                              onRemove(student);
                               // Handle delete button press
                             },
                             style: ElevatedButton.styleFrom(

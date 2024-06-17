@@ -46,8 +46,8 @@ class AppRoutes {
       case splashScreen:
        return appPage(Choosing_lang());
        case loginScreen:
-    //      return appPage(Profiledata_Eng());
-    //
+         // return appPage(Profiledata_Eng());
+
     return appPage(Login_Eng());
        case profile:
         return appPage(Landing());
@@ -58,7 +58,7 @@ class AppRoutes {
       case options:
         return appPage(NavBar_Eng());
       case addStudent:
-        return appPage( AddNewStudent());
+        return appPage( AddNewStudent(onAdd: (Student ) {  },));
       // case notificationScreen:
       //   return appPage(const NotificationPage());
       // case askElhamalDoctorScreen:

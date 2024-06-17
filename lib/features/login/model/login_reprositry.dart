@@ -33,15 +33,16 @@ class LoginRepository {
   // }
   Future login(Map<String , dynamic> data) async {
     try {
-      Response response = await Network.post(
+      var response = await Network.post(
         EndPoints.login,
         data: data,
       );
-      return response.data;
+      return response;
     } on Failure {
       rethrow;
     }
   }
+
 
 }
 

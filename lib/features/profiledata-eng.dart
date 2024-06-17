@@ -5,6 +5,7 @@ import 'package:flutter/gestures.dart';
 import 'dart:ui';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kolliity/features/student/student%20profile/model/model.dart';
+import 'package:kolliity/features/student/student%20profile/model/pref/studentManager.dart';
 import 'package:kolliity/features/student/student%20profile/model/reprsatry.dart';
 import 'package:kolliity/features/units.dart';
 import 'package:kolliity/shared/extentions/string_extensions.dart';
@@ -218,10 +219,11 @@ class _Profiledata_EngState extends State<Profiledata_Eng> {
                                     decoration: BoxDecoration(
                                       color: Color(0xffd9d9d9),
                                       borderRadius: BorderRadius.circular(77.5 * fem),
-                                      image: const DecorationImage(
+
+                                      image:  DecorationImage(
                                         fit: BoxFit.cover,
                                         image: AssetImage(
-                                          'assets/mobile-app/images/ellipse-1-bg-eAi.png',
+                                          '${PrefManager.currentUser?.profileImage}',
                                         ),
                                       ),
                                     ),
@@ -328,8 +330,9 @@ class _Profiledata_EngState extends State<Profiledata_Eng> {
                                             child: SizedBox(
                                               width: 167 * fem,
                                               height: 25 * fem,
-                                              child: Text(
-                                                '${PrefManager.currentUser?.userName}',
+                                              child: StudentManager.currentUser?.id != null
+                                             ? Text(
+                                                '${StudentManager.currentUser?.fullNameInArabic}',
                                                 style: SafeGoogleFont(
                                                   'Inter',
                                                   fontSize: 20 * ffem,
@@ -338,7 +341,18 @@ class _Profiledata_EngState extends State<Profiledata_Eng> {
                                                   letterSpacing: -0.4 * fem,
                                                   color: Color(0xff000000),
                                                 ),
-                                              ),
+                                              )
+                                             : Text(
+                                            'محمود احمد ناصر',
+                                            style: SafeGoogleFont(
+                                            'Inter',
+                                                fontSize: 20 * ffem,
+                                                fontWeight: FontWeight.w600,
+                                            height: 1.2272726059 * ffem / fem,
+                                                letterSpacing: -0.4 * fem,
+                                                color: Color(0xff000000),
+                                          ),
+                                        ),
                                             ),
                                           ),
                                         ),
@@ -384,7 +398,7 @@ class _Profiledata_EngState extends State<Profiledata_Eng> {
                                             child: SizedBox(
                                               width: 180 * fem,
                                               height: 25 * fem,
-                                              child: PrefManager.currentUser?.userName != null
+                                              child: PrefManager.currentUser?.token != null
                                                   ? Text(' ${PrefManager.currentUser?.userName}', style:SafeGoogleFont(
                                                 'Inter',
                                                 fontSize: 18 * ffem,
@@ -410,61 +424,72 @@ class _Profiledata_EngState extends State<Profiledata_Eng> {
                                       ],
                                     ),
                                   ),
-                                  // Container(
-                                  //   // autogroupjbhgaW2 (3AwYUHS9qcmHryfdqWjBhG)
-                                  //   margin: EdgeInsets.fromLTRB(
-                                  //       0 * fem, 0 * fem, 0 * fem, 24 * fem),
-                                  //   width: 225 * fem,
-                                  //   height: 40 * fem,
-                                  //   child: Stack(
-                                  //     children: [
-                                  //       Positioned(
-                                  //         // emailhqY (67:380)
-                                  //         left: 0 * fem,
-                                  //         top: 0 * fem,
-                                  //         child: Align(
-                                  //           child: SizedBox(
-                                  //             width: 39 * fem,
-                                  //             height: 20 * fem,
-                                  //             child: Text(
-                                  //               'Email'.tr(),
-                                  //               style: SafeGoogleFont(
-                                  //                 'Inter',
-                                  //                 fontSize: 16 * ffem,
-                                  //                 fontWeight: FontWeight.w400,
-                                  //                 height: 1.2272726297 * ffem / fem,
-                                  //                 letterSpacing: -0.32 * fem,
-                                  //                 color: Color(0xff676767),
-                                  //               ),
-                                  //             ),
-                                  //           ),
-                                  //         ),
-                                  //       ),
-                                  //       Positioned(
-                                  //         // aboualsoudgmailcomota (67:387)
-                                  //         left: 0 * fem,
-                                  //         top: 15 * fem,
-                                  //         child: Align(
-                                  //           child: SizedBox(
-                                  //             width: 225 * fem,
-                                  //             height: 25 * fem,
-                                  //             child: Text(
-                                  //               '',
-                                  //               style: SafeGoogleFont(
-                                  //                 'Inter',
-                                  //                 fontSize: 20 * ffem,
-                                  //                 fontWeight: FontWeight.w600,
-                                  //                 height: 1.2272726059 * ffem / fem,
-                                  //                 letterSpacing: -0.4 * fem,
-                                  //                 color: Color(0xff000000),
-                                  //               ),
-                                  //             ),
-                                  //           ),
-                                  //         ),
-                                  //       ),
-                                  //     ],
-                                  //   ),
-                                  // ),
+                                  Container(
+                                    // autogroupjbhgaW2 (3AwYUHS9qcmHryfdqWjBhG)
+                                    margin: EdgeInsets.fromLTRB(
+                                        0 * fem, 0 * fem, 0 * fem, 24 * fem),
+                                    width: 225 * fem,
+                                    height: 40 * fem,
+                                    child: Stack(
+                                      children: [
+                                        Positioned(
+                                          // emailhqY (67:380)
+                                          left: 0 * fem,
+                                          top: 0 * fem,
+                                          child: Align(
+                                            child: SizedBox(
+                                              width: 39 * fem,
+                                              height: 20 * fem,
+                                              child: Text(
+                                                'Email'.tr(),
+                                                style: SafeGoogleFont(
+                                                  'Inter',
+                                                  fontSize: 16 * ffem,
+                                                  fontWeight: FontWeight.w400,
+                                                  height: 1.2272726297 * ffem / fem,
+                                                  letterSpacing: -0.32 * fem,
+                                                  color: Color(0xff676767),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        Positioned(
+                                          // aboualsoudgmailcomota (67:387)
+                                          left: 0 * fem,
+                                          top: 15 * fem,
+                                          child: Align(
+                                            child: SizedBox(
+                                              width: 225 * fem,
+                                              height: 25 * fem,
+                                              child:  PrefManager.currentUser?.token != null
+                                                  ? Text(' ${PrefManager.currentUser?.email}',
+                                                style: SafeGoogleFont(
+                                                  'Inter',
+                                                  fontSize: 20 * ffem,
+                                                  fontWeight: FontWeight.w600,
+                                                  height: 1.2272726059 * ffem / fem,
+                                                  letterSpacing: -0.4 * fem,
+                                                  color: Color(0xff000000),
+                                                ),
+                                              )
+                                              :Text(
+                                                '',
+                                                style: SafeGoogleFont(
+                                                  'Inter',
+                                                  fontSize: 20 * ffem,
+                                                  fontWeight: FontWeight.w600,
+                                                  height: 1.2272726059 * ffem / fem,
+                                                  letterSpacing: -0.4 * fem,
+                                                  color: Color(0xff000000),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
                                   Container(
                                     // autogroups9pcgSa (3AwYY2pucGT1ZZCpNzs9PC)
                                     width: 76 * fem,
@@ -502,7 +527,7 @@ class _Profiledata_EngState extends State<Profiledata_Eng> {
                                               width: 76 * fem,
                                               height: 25 * fem,
                                               child: Text(
-                                                '${PrefManager.currentUser?.userName}',
+                                                '${StudentManager.currentUser?.code}',
                                                 style: SafeGoogleFont(
                                                   'Inter',
                                                   fontSize: 20 * ffem,

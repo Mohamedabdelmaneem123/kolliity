@@ -1,14 +1,11 @@
-
-
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:logger/logger.dart';
 
-import '../../features/login/model/usermodel.dart';
-import 'pref_keys.dart';
-import 'pref_utils.dart';
+import '../../../../../shared/prefs/pref_keys.dart';
+import '../../../../../shared/prefs/pref_utils.dart';
+import '../model.dart';
 
-class PrefManager {
-  static UserModel? currentUser;
+class StudentManager{
+  static Profile? currentUser;
 
   static Future init() async {
     /// User
@@ -16,7 +13,7 @@ class PrefManager {
   }
 
   /// SETTERS
-  static Future setCurrentUser(UserModel? user) async {
+  static Future setCurrentUser(Profile? user) async {
     currentUser = user;
     await PrefUtils.setJson(PrefKeys.currentUser, user?.toJson());
   }
@@ -27,16 +24,14 @@ class PrefManager {
   }
 
   /// GETTERS
-  static Future<UserModel?> getCurrentUser() async {
+  static Future<Profile?> getCurrentUser() async {
     Map<String, dynamic>? userData =
     await PrefUtils.getJson(PrefKeys.currentUser);
-    UserModel? temp;
+    Profile? temp;
     if (userData != null) {
-      temp = UserModel.fromJson(userData);
+      temp = Profile.fromJson(userData);
       Logger().d("user : ${temp.toJson()}");
     }
     return temp;
   }
 }
-
-
