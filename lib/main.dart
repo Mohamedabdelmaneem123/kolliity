@@ -131,7 +131,7 @@ class MyApp extends StatelessWidget {
                 backgroundColor: Colors.black26,
                 unselectedItemColor: Colors.grey,
               ),
-              textTheme:  TextTheme(bodyText1: TextStyle(
+              textTheme:  TextTheme(headlineLarge: TextStyle(
                   fontWeight:FontWeight.w900,
                   color: Colors.white
               ))

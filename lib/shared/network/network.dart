@@ -1,7 +1,6 @@
 import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'dart:io';
-
-import 'package:dio/dio.dart';
 
 import 'package:logger/logger.dart';
 
@@ -10,7 +9,7 @@ import '../prefs/pref_manager.dart';
 import '../util/app_routes.dart';
 import '../util/ui.dart';
 
-class Network {
+/*class Network {
   static const String devBaseUrl = 'http://kollity.runasp.net/api/';
   static const String baseUrl = devBaseUrl;
 
@@ -346,6 +345,164 @@ class Network {
       throw Failure(message: "Format Exception");
     } on Error catch (e) {
       throw Failure(message: "Error $e");
+    }
+  }
+}*/
+
+class Network {
+  static const String devBaseUrl = 'http://kollity.runasp.net/api/';
+  static const String baseUrl = devBaseUrl;
+
+  // Generic GET request
+  static Future<dynamic> get(String endpoint) async {
+    try {
+      final response = await http.get(
+          Uri.parse('$baseUrl$endpoint'),
+        headers: PrefManager.currentUser?.token != null
+            ? {
+          "Authorization":
+          "Bearer ${PrefManager.currentUser?.token}",
+          "Accept": "application/json",
+          "content-type": "application/json"
+        }
+            : {
+          "Accept": "application/json",
+          "Content-Type": "application/json;charset=utf-8"
+        },
+      );
+      Logger().e(response.body);
+      if (response.statusCode == 401 || response.statusCode == 403){
+        UI.push(AppRoutes.loginScreen);
+      }
+      return _processResponse(response);
+    } on HttpException catch (error) {
+      Logger().e(error);
+      throw Failure(message: error.message, data: error);
+    } on SocketException {
+      throw Failure(message: "No Internet connect");
+    } on FormatException {
+      throw Failure(message: "Format Exception");
+    } on Error catch (e) {
+      throw Failure(message: "Error $e");
+    }
+  }
+
+  // Generic POST request
+  static Future<dynamic> post(String endpoint, {Map<String, dynamic>? data}) async {
+    Logger().d(baseUrl + endpoint);
+    Logger().d(data);
+    try {
+      final response = await http.post(
+        Uri.parse('$baseUrl$endpoint'),
+        headers: PrefManager.currentUser?.token != null
+            ? {
+            "Authorization":
+            "Bearer ${PrefManager.currentUser?.token}",
+            "Accept": "application/json",
+            "content-type": "application/json"
+          }
+          : {
+          "Accept": "application/json",
+          "Content-Type": "application/json;charset=utf-8"
+        },
+        body: jsonEncode(data),
+      );
+      Logger().e(response.body);
+      if (response.statusCode == 401 || response.statusCode == 403){
+        UI.push(AppRoutes.loginScreen);
+      }
+
+      if (response.statusCode == 404){
+        UI.showMessage(_processResponse(response)["title"]);
+      }
+      return _processResponse(response);
+    } on HttpException catch (error) {
+      Logger().e(error);
+      throw Failure(message: error.message, data: error);
+    } on SocketException {
+      throw Failure(message: "No Internet connect");
+    } on FormatException {
+      throw Failure(message: "Format Exception");
+    } on Error catch (e) {
+      throw Failure(message: "Error $e");
+    }
+  }
+
+  // Generic PUT request
+  static Future<dynamic> put(String endpoint, {Map<String, dynamic>? data}) async {
+    try {
+      final response = await http.put(
+        Uri.parse('$baseUrl$endpoint'),
+        headers: PrefManager.currentUser?.token != null
+            ? {
+          "Authorization":
+          "Bearer ${PrefManager.currentUser?.token}",
+          "Accept": "application/json",
+          "content-type": "application/json"
+        }
+            : {
+          "Accept": "application/json",
+          "Content-Type": "application/json;charset=utf-8"
+        },
+        body: jsonEncode(data),
+      );
+      Logger().e(response.body);
+      if (response.statusCode == 401 || response.statusCode == 403){
+        UI.push(AppRoutes.loginScreen);
+      }
+      return _processResponse(response);
+    } on HttpException catch (error) {
+      Logger().e(error);
+      throw Failure(message: error.message, data: error);
+    } on SocketException {
+      throw Failure(message: "No Internet connect");
+    } on FormatException {
+      throw Failure(message: "Format Exception");
+    } on Error catch (e) {
+      throw Failure(message: "Error $e");
+    }
+  }
+
+  // Generic DELETE request
+  static Future<dynamic> delete(String endpoint) async {
+    try {
+      final response = await http.delete(Uri.parse(
+          '$baseUrl$endpoint'),
+        headers: PrefManager.currentUser?.token != null
+            ? {
+          "Authorization":
+          "Bearer ${PrefManager.currentUser?.token}",
+          "Accept": "application/json",
+          "content-type": "application/json"
+        }
+            : {
+          "Accept": "application/json",
+          "Content-Type": "application/json;charset=utf-8"
+        });
+      Logger().e(response.body);
+      if (response.statusCode == 401 || response.statusCode == 403){
+        UI.push(AppRoutes.loginScreen);
+      }
+      return _processResponse(response);
+    } on HttpException catch (error) {
+      Logger().e(error);
+      throw Failure(message: error.message, data: error);
+    } on SocketException {
+      throw Failure(message: "No Internet connect");
+    } on FormatException {
+      throw Failure(message: "Format Exception");
+    } on Error catch (e) {
+      throw Failure(message: "Error $e");
+    }
+  }
+
+  // Helper function to process the response
+  static dynamic _processResponse(http.Response response) {
+    final responseBody = response.body;
+    if (response.statusCode >= 200) {
+      return jsonDecode(responseBody);
+    } else {
+      throw Exception('Error ${response.statusCode}: $responseBody');
     }
   }
 }

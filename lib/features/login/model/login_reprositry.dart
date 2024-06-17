@@ -1,12 +1,8 @@
 import 'dart:convert';
 
-import 'package:dio/dio.dart';
-import 'package:kolliity/features/login/model/usermodel.dart';
-import 'package:http/http.dart' as http;
-
-import '../../../shared/models/failure.dart';
-import '../../../shared/network/endpoints.dart';
-import '../../../shared/network/network.dart';
+import 'package:kolliity/shared/models/failure.dart';
+import 'package:kolliity/shared/network/endpoints.dart';
+import 'package:kolliity/shared/network/network.dart';
 
 
 class LoginRepository {
@@ -33,11 +29,11 @@ class LoginRepository {
   // }
   Future login(Map<String , dynamic> data) async {
     try {
-      Response response = await Network.post(
+      var response = await Network.post(
         EndPoints.login,
         data: data,
       );
-      return response.data;
+      return response;
     } on Failure {
       rethrow;
     }
