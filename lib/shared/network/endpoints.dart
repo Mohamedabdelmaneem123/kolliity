@@ -1,7 +1,10 @@
+import 'package:kolliity/features/login/model/usermodel.dart';
+import 'package:kolliity/shared/prefs/pref_manager.dart';
+
 class EndPoints {
   static const String login = "user/login";
   static const String logout = "logout";
-  static const String home = "Student/0af352bf-df41-4702-306e-08dc2f249cd2/profile";
+  static  String home = "Student/${PrefManager.currentUser?.id}/profile";
   static const String checkUserName = "checkUserName";
   static const String checkPassword = "checkPassword";
   static const String faq = "faq";

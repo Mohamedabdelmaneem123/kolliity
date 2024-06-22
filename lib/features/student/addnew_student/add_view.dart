@@ -37,10 +37,10 @@ class _AddNewStudentState extends State<AddNewStudent> {
   void _submit() {
     if (_formKey.currentState!.validate()) {
       final newStudent = Student(
-        _profilePictureController.text,
-        _usernameController.text,
-        _fullNameController.text,
-        int.parse(_codeController.text),
+        profilePicture: _profilePictureController.text,
+        username: _usernameController.text,
+        fullName: _fullNameController.text,
+        code: int.parse(_codeController.text),
       );
       widget.onAdd(newStudent);
       Navigator.of(context).pop();

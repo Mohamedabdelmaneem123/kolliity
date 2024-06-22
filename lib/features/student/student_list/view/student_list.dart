@@ -1425,6 +1425,8 @@
 //   }
 // }
 
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -1433,15 +1435,44 @@ import 'package:kolliity/features/student/addnew_student/add_view.dart';
 import '../../../../shared/app_size.dart';
 import '../../../../shared/constants/colors.dart';
 import '../search_on_student.dart';
+import 'package:http/http.dart' as http;
+
 
 class Student {
-  final String profilePicture;
+  final String? profilePicture;
   final String username;
   final String fullName;
   final int code;
 
-  Student(this.profilePicture, this.username, this.fullName, this.code);
+  Student({
+    required this.profilePicture,
+    required this.username,
+    required this.fullName,
+    required this.code,
+  });
+
+  factory Student.fromJson(Map<String, dynamic> json) {
+    return Student(
+      profilePicture: json['profileImage'],
+      username: json['userName'],
+      fullName: json['fullNameInArabic'],
+      code: int.parse(json['code']),
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'profileImage': profilePicture,
+      'userName': username,
+      'fullNameInArabic': fullName,
+      'code': code.toString(),
+    };
+  }
 }
+
+
+
+
 
 class StudentList extends StatefulWidget {
   @override
@@ -1449,59 +1480,92 @@ class StudentList extends StatefulWidget {
 }
 
 class _StudentListState extends State<StudentList> {
-  final List<Student> students = List.generate(
-    10,
-        (index) => Student(
-      'https://via.placeholder.com/150', // Placeholder image URL
-      'MahmoudStudent${10 + index}',
-      'this is my student${10 + index}\'th full name',
-      10 + index,
-    ),
-  );
-
+  List<Student> students = [];
   List<Student> filteredStudents = [];
   TextEditingController searchController = TextEditingController();
-
+  final String authToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiU3R1ZGVudCIsIm5hbWVpZCI6Ik1haG1vdWRTdHVkZW50MjIiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiJlNmQ5NDQxYy02ZjA1LTQ1ZGEtMzA3YS0wOGRjMmYyNDljZDIiLCJuYmYiOjE3MTg3MzEyNzksImV4cCI6MTcxODczMzk3OSwiaWF0IjoxNzE4NzMxMjc5LCJpc3MiOiJBdXRoU2VydmVyIiwiYXVkIjoiQXV0aFNlcnZlciJ9.48YcDaYAJphmkPnEtg5Ln05ArvsWf13m-lINsACBKSQ';
   @override
   void initState() {
     super.initState();
-    filteredStudents = students;
+    fetchStudents();
   }
 
-  void _searchStudent(String query) {
-    final int? code = int.tryParse(query);
-    if (code != null) {
-      setState(() {
-        filteredStudents = students.where((student) => student.code == code).toList();
-      });
-    } else {
-      setState(() {
-        filteredStudents = students;
-      });
+
+  Future<void> fetchStudents({int pageIndex = 0, int pageSize = 11, String? code, String? userNamePrefix}) async {
+    try {
+      final queryParameters = {
+        'PageIndex': pageIndex.toString(),
+        'PageSize': pageSize.toString(),
+        if (code != null) 'Code': code,
+        if (userNamePrefix != null) 'UserNamePrefix': userNamePrefix,
+      };
+      final uri = Uri.http('kollity.runasp.net', '/api/Student', queryParameters);
+      final response = await http.get(
+        uri,
+        headers: {
+          'Authorization': 'Bearer $authToken',
+          'accept': 'text/plain',
+          'Content-Type': 'application/json'
+        },
+      );
+
+      if (response.statusCode == 200) {
+        final List<dynamic> data = json.decode(response.body);
+        setState(() {
+          students = data.map((json) => Student.fromJson(json)).toList();
+          filteredStudents = students;
+        });
+      } else {
+        print('Failed to load students. Status code: ${response.statusCode}');
+        print('Response body: ${response.body}');
+        throw Exception('Failed to load students');
+      }
+    } catch (e) {
+      print('Error occurred: $e');
+      throw Exception('Failed to load students');
     }
   }
 
-
-
-  void _removeStudent(Student student) {
+  void _searchStudent(String query) {
     setState(() {
-      students.remove(student);
-      _searchStudent(searchController.text); // Update filtered list based on current search query
+      filteredStudents = students
+          .where((student) => student.username.toLowerCase().contains(query.toLowerCase()))
+          .toList();
     });
   }
 
-  void _addStudent(Student student) {
-    setState(() {
-      students.add(student);
-      _searchStudent(searchController.text); // Update filtered list based on current search query
-    });
+  Future<void> removeStudent(Student student) async {
+    final response = await http.delete(
+      Uri.parse('http://kollity.runasp.net/api/Student/${student.code}'),
+      headers: {'Content-Type': 'application/json'},
+    );
+
+    if (response.statusCode == 200) {
+      fetchStudents(); // Refresh the student list after removing a student
+    } else {
+      throw Exception('Failed to delete student');
+    }
+  }
+
+  Future<void> addStudent(Student student) async {
+    final response = await http.post(
+      Uri.parse('http://kollity.runasp.net/api/Student'),
+      headers: {'Content-Type': 'application/json'},
+      body: json.encode(student.toJson()),
+    );
+
+    if (response.statusCode == 200) {
+      fetchStudents(); // Refresh the student list after adding a new student
+    } else {
+      throw Exception('Failed to add student');
+    }
   }
 
   void _showAddStudentDialog() {
     showDialog(
       context: context,
       builder: (context) {
-        return AddNewStudent(onAdd: _addStudent);
+        return AddNewStudent(onAdd: addStudent);
       },
     );
   }
@@ -1537,9 +1601,9 @@ class _StudentListState extends State<StudentList> {
                   border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
                   suffixIcon: IconButton(
                     icon: Icon(Icons.search),
-                    onPressed: () {
-                      _searchStudent(searchController.text);
-                    },
+                      onPressed: () {
+                        _searchStudent(searchController.text);
+                      },
                   ),
                 ),
                 onChanged: (value) {
@@ -1553,7 +1617,7 @@ class _StudentListState extends State<StudentList> {
               itemCount: filteredStudents.length,
               itemBuilder: (context, index) {
                 return StudentListItem(student: filteredStudents[index],
-                  onRemove: _removeStudent,
+                  onRemove: removeStudent,
                 );
 
               },
@@ -1582,7 +1646,9 @@ class StudentListItem extends StatelessWidget {
           color: Colors.white,
           child: ListTile(
             leading: CircleAvatar(
-              backgroundImage: NetworkImage(student.profilePicture),
+              backgroundImage:  NetworkImage(
+                student.profilePicture ?? 'https://via.placeholder.com/150', // Placeholder image if null
+              )
             ),
             title: Text(student.username),
             subtitle: Text(student.fullName),

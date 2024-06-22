@@ -22,38 +22,19 @@ import 'nav-eng.dart';
 
 
 class Profiledata_Eng extends StatefulWidget {
-  late final String id;
-  late final String token;
+  late final String username;
+  late final String fullName;
+
+
   @override
   State<Profiledata_Eng> createState() => _Profiledata_EngState();
 
+  Profiledata_Eng({required String user_name, required String full_Name});
 }
 
 class _Profiledata_EngState extends State<Profiledata_Eng> {
 
-  // late Future<Profile> futureProfile;
-  // String? username;
-  // String? name;
-  //
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   _loadUsername();
-  //   _loadName();
-  // }
-  //
-  // Future<void> _loadUsername() async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   setState(() {
-  //     username = prefs.getString('username');
-  //   });
-  // }
-  // Future<void> _loadName() async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   setState(() {
-  //     name = prefs.getString('name');
-  //   });
-  // }
+
   @override
 
   Widget build(BuildContext context) {
@@ -289,261 +270,281 @@ class _Profiledata_EngState extends State<Profiledata_Eng> {
                                 color: Color(0xffffffff),
                                 borderRadius: BorderRadius.circular(36 * fem),
                               ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Container(
-                                    // autogroupc5pljTU (3AwYKhr7cMPykTJXkUC5PL)
-                                    margin: EdgeInsets.fromLTRB(
-                                        0 * fem, 0 * fem, 0 * fem, 14 * fem),
-                                    width: 167 * fem,
-                                    height: 43 * fem,
-                                    child: Stack(
-                                      children: [
-                                        Positioned(
-                                          // nameFwc (67:377)
-                                          left: 0 * fem,
-                                          top: 0 * fem,
-                                          child: Align(
-                                            child: SizedBox(
-                                              width: 48 * fem,
-                                              height: 20 * fem,
-                                              child: Text(
-                                                'Name:'.tr(),
-                                                style: SafeGoogleFont(
-                                                  'Inter',
-                                                  fontSize: 16 * ffem,
-                                                  fontWeight: FontWeight.w400,
-                                                  height: 1.2272726297 * ffem / fem,
-                                                  letterSpacing: -0.32 * fem,
-                                                  color: Color(0xff676767),
+                              child: SingleChildScrollView(
+
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Container(
+                                      // autogroupc5pljTU (3AwYKhr7cMPykTJXkUC5PL)
+                                      margin: EdgeInsets.fromLTRB(
+                                          0 * fem, 0 * fem, 0 * fem, 14 * fem),
+                                      width: 167 * fem,
+                                      height: 43 * fem,
+                                      child: Stack(
+                                        children: [
+                                          Positioned(
+                                            // nameFwc (67:377)
+                                            left: 0 * fem,
+                                            top: 0 * fem,
+                                            child: Align(
+                                              child: SizedBox(
+                                                width: 48 * fem,
+                                                height: 20 * fem,
+                                                child: Text(
+                                                  'Name:'.tr(),
+                                                  style: SafeGoogleFont(
+                                                    'Inter',
+                                                    fontSize: 16 * ffem,
+                                                    fontWeight: FontWeight.w400,
+                                                    height: 1.2272726297 * ffem / fem,
+                                                    letterSpacing: -0.32 * fem,
+                                                    color: Color(0xff676767),
+                                                  ),
                                                 ),
                                               ),
                                             ),
                                           ),
-                                        ),
-                                        Positioned(
-                                          // abdoaboualsoudLy4 (67:384)
-                                          left: 0 * fem,
-                                          top: 18 * fem,
-                                          child: Align(
-                                            child: SizedBox(
-                                              width: 167 * fem,
-                                              height: 25 * fem,
-                                              child: StudentManager.currentUser?.id != null
-                                             ? Text(
-                                                '${StudentManager.currentUser?.fullNameInArabic}',
-                                                style: SafeGoogleFont(
-                                                  'Inter',
+                                          Positioned(
+                                            // abdoaboualsoudLy4 (67:384)
+                                            left: 0 * fem,
+                                            top: 18 * fem,
+                                            child: Align(
+                                              child: SizedBox(
+                                                width: 167 * fem,
+                                                height: 25 * fem,
+                                                child: StudentManager.currentUser?.id != null
+                                               ? Text(
+                                                  '${StudentManager.currentUser?.fullNameInArabic}',
+                                                  style: SafeGoogleFont(
+                                                    'Inter',
+                                                    fontSize: 20 * ffem,
+                                                    fontWeight: FontWeight.w600,
+                                                    height: 1.2272726059 * ffem / fem,
+                                                    letterSpacing: -0.4 * fem,
+                                                    color: Color(0xff000000),
+                                                  ),
+                                                )
+                                               : Text(
+                                              'this is my student10.th full name',
+                                              style: SafeGoogleFont(
+                                              'Inter',
                                                   fontSize: 20 * ffem,
                                                   fontWeight: FontWeight.w600,
-                                                  height: 1.2272726059 * ffem / fem,
+                                              height: 1.2272726059 * ffem / fem,
                                                   letterSpacing: -0.4 * fem,
                                                   color: Color(0xff000000),
-                                                ),
-                                              )
-                                             : Text(
-                                            'محمود احمد ناصر',
-                                            style: SafeGoogleFont(
-                                            'Inter',
-                                                fontSize: 20 * ffem,
-                                                fontWeight: FontWeight.w600,
-                                            height: 1.2272726059 * ffem / fem,
-                                                letterSpacing: -0.4 * fem,
-                                                color: Color(0xff000000),
-                                          ),
-                                        ),
                                             ),
                                           ),
-                                        ),
-                                      ],
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                  Container(
-                                    // autogroupeq7cdxA (3AwYQ34ENDPUbvTVkmEq7c)
-                                    margin: EdgeInsets.fromLTRB(
-                                        0 * fem, 0 * fem, 0 * fem, 23 * fem),
-                                    width: 180 * fem,
-                                    height: 50 * fem,
-                                    child: Stack(
-                                      children: [
-                                        Positioned(
-                                          // usernameyWE (67:379)
-                                          left: 0 * fem,
-                                          top: 0 * fem,
-                                          child: Align(
-                                            child: SizedBox(
-                                              width: 75 * fem,
-                                              height: 20 * fem,
-                                              child: Text(
-                                                'Username'.tr(),
-                                                style: SafeGoogleFont(
-                                                  'Inter',
-                                                  fontSize: 16 * ffem,
-                                                  fontWeight: FontWeight.w400,
-                                                  height: 1.2272726297 * ffem / fem,
-                                                  letterSpacing: -0.32 * fem,
-                                                  color: Color(0xff676767),
+                                    Container(
+                                      // autogroupeq7cdxA (3AwYQ34ENDPUbvTVkmEq7c)
+                                      margin: EdgeInsets.fromLTRB(
+                                          0 * fem, 0 * fem, 0 * fem, 23 * fem),
+                                      width: 180 * fem,
+                                      height: 50 * fem,
+                                      child: Stack(
+                                        children: [
+                                          Positioned(
+                                            // usernameyWE (67:379)
+                                            left: 0 * fem,
+                                            top: 0 * fem,
+                                            child: Align(
+                                              child: SizedBox(
+                                                width: 75 * fem,
+                                                height: 20 * fem,
+                                                child: Text(
+                                                  'Username'.tr(),
+                                                  style: SafeGoogleFont(
+                                                    'Inter',
+                                                    fontSize: 16 * ffem,
+                                                    fontWeight: FontWeight.w400,
+                                                    height: 1.2272726297 * ffem / fem,
+                                                    letterSpacing: -0.32 * fem,
+                                                    color: Color(0xff676767),
+                                                  ),
                                                 ),
                                               ),
                                             ),
                                           ),
-                                        ),
-                                        Spacer(),
-                                        Positioned(
-                                          // aboualsoudH18 (67:386)
-                                          left: 0 * fem,
-                                          top: 25 * fem,
-                                          child: Align(
-                                            child: SizedBox(
-                                              width: 180 * fem,
-                                              height: 25 * fem,
-                                              child: PrefManager.currentUser?.token != null
-                                                  ? Text(' ${PrefManager.currentUser?.userName}', style:SafeGoogleFont(
-                                                'Inter',
-                                                fontSize: 18 * ffem,
-                                                fontWeight: FontWeight.w600,
-                                                height: 1.2272726059 * ffem / fem,
-                                                letterSpacing: -0.4 * fem,
-                                                color: Color(0xff000000),
-                                              ))
-                                                  : Text(
-                                                '',
-                                                style: SafeGoogleFont(
+                                          Spacer(),
+                                          Positioned(
+                                            // aboualsoudH18 (67:386)
+                                            left: 0 * fem,
+                                            top: 25 * fem,
+                                            child: Align(
+                                              child: SizedBox(
+                                                width: 180 * fem,
+                                                height: 25 * fem,
+                                                child: PrefManager.currentUser?.token != null
+                                                    ? Text(' ${PrefManager.currentUser?.userName}', style:SafeGoogleFont(
                                                   'Inter',
-                                                  fontSize: 20 * ffem,
+                                                  fontSize: 18 * ffem,
                                                   fontWeight: FontWeight.w600,
                                                   height: 1.2272726059 * ffem / fem,
                                                   letterSpacing: -0.4 * fem,
                                                   color: Color(0xff000000),
+                                                ))
+                                                    : Text(
+                                                  '',
+                                                  style: SafeGoogleFont(
+                                                    'Inter',
+                                                    fontSize: 20 * ffem,
+                                                    fontWeight: FontWeight.w600,
+                                                    height: 1.2272726059 * ffem / fem,
+                                                    letterSpacing: -0.4 * fem,
+                                                    color: Color(0xff000000),
+                                                  ),
                                                 ),
                                               ),
                                             ),
                                           ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                  Container(
-                                    // autogroupjbhgaW2 (3AwYUHS9qcmHryfdqWjBhG)
-                                    margin: EdgeInsets.fromLTRB(
-                                        0 * fem, 0 * fem, 0 * fem, 24 * fem),
-                                    width: 225 * fem,
-                                    height: 40 * fem,
-                                    child: Stack(
-                                      children: [
-                                        Positioned(
-                                          // emailhqY (67:380)
-                                          left: 0 * fem,
-                                          top: 0 * fem,
-                                          child: Align(
-                                            child: SizedBox(
-                                              width: 39 * fem,
-                                              height: 20 * fem,
-                                              child: Text(
-                                                'Email'.tr(),
-                                                style: SafeGoogleFont(
-                                                  'Inter',
-                                                  fontSize: 16 * ffem,
-                                                  fontWeight: FontWeight.w400,
-                                                  height: 1.2272726297 * ffem / fem,
-                                                  letterSpacing: -0.32 * fem,
-                                                  color: Color(0xff676767),
+                                    Container(
+                                      // autogroupjbhgaW2 (3AwYUHS9qcmHryfdqWjBhG)
+                                      margin: EdgeInsets.fromLTRB(
+                                          0 * fem, 0 * fem, 0 * fem, 24 * fem),
+                                      width: 225 * fem,
+                                      height: 40 * fem,
+                                      child: Stack(
+                                        children: [
+                                          Positioned(
+                                            // emailhqY (67:380)
+                                            left: 0 * fem,
+                                            top: 0 * fem,
+                                            child: Align(
+                                              child: SizedBox(
+                                                width: 39 * fem,
+                                                height: 20 * fem,
+                                                child: Text(
+                                                  'Email'.tr(),
+                                                  style: SafeGoogleFont(
+                                                    'Inter',
+                                                    fontSize: 16 * ffem,
+                                                    fontWeight: FontWeight.w400,
+                                                    height: 1.2272726297 * ffem / fem,
+                                                    letterSpacing: -0.32 * fem,
+                                                    color: Color(0xff676767),
+                                                  ),
                                                 ),
                                               ),
                                             ),
                                           ),
-                                        ),
-                                        Positioned(
-                                          // aboualsoudgmailcomota (67:387)
-                                          left: 0 * fem,
-                                          top: 15 * fem,
-                                          child: Align(
-                                            child: SizedBox(
-                                              width: 225 * fem,
-                                              height: 25 * fem,
-                                              child:  PrefManager.currentUser?.token != null
-                                                  ? Text(' ${PrefManager.currentUser?.email}',
-                                                style: SafeGoogleFont(
-                                                  'Inter',
-                                                  fontSize: 20 * ffem,
-                                                  fontWeight: FontWeight.w600,
-                                                  height: 1.2272726059 * ffem / fem,
-                                                  letterSpacing: -0.4 * fem,
-                                                  color: Color(0xff000000),
-                                                ),
-                                              )
-                                              :Text(
-                                                '',
-                                                style: SafeGoogleFont(
-                                                  'Inter',
-                                                  fontSize: 20 * ffem,
-                                                  fontWeight: FontWeight.w600,
-                                                  height: 1.2272726059 * ffem / fem,
-                                                  letterSpacing: -0.4 * fem,
-                                                  color: Color(0xff000000),
+                                          Positioned(
+                                            // aboualsoudgmailcomota (67:387)
+                                            left: 0 * fem,
+                                            top: 15 * fem,
+                                            child: Align(
+                                              child: SizedBox(
+                                                width: 225 * fem,
+                                                height: 25 * fem,
+                                                child:  PrefManager.currentUser?.token != null
+                                                    ? Text(' ${PrefManager.currentUser?.email}',
+                                                  style: SafeGoogleFont(
+                                                    'Inter',
+                                                    fontSize: 20 * ffem,
+                                                    fontWeight: FontWeight.w600,
+                                                    height: 1.2272726059 * ffem / fem,
+                                                    letterSpacing: -0.4 * fem,
+                                                    color: Color(0xff000000),
+                                                  ),
+                                                )
+                                                :Text(
+                                                  '',
+                                                  style: SafeGoogleFont(
+                                                    'Inter',
+                                                    fontSize: 20 * ffem,
+                                                    fontWeight: FontWeight.w600,
+                                                    height: 1.2272726059 * ffem / fem,
+                                                    letterSpacing: -0.4 * fem,
+                                                    color: Color(0xff000000),
+                                                  ),
                                                 ),
                                               ),
                                             ),
                                           ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                  Container(
-                                    // autogroups9pcgSa (3AwYY2pucGT1ZZCpNzs9PC)
-                                    width: 76 * fem,
-                                    height: 40 * fem,
-                                    child: Stack(
-                                      children: [
-                                        Positioned(
-                                          // codepHt (67:381)
-                                          left: 0 * fem,
-                                          top: 0 * fem,
-                                          child: Align(
-                                            child: SizedBox(
-                                              width: 40 * fem,
-                                              height: 20 * fem,
-                                              child: Text(
-                                                'Code'.tr(),
-                                                style: SafeGoogleFont(
-                                                  'Inter',
-                                                  fontSize: 16 * ffem,
-                                                  fontWeight: FontWeight.w400,
-                                                  height: 1.2272726297 * ffem / fem,
-                                                  letterSpacing: -0.32 * fem,
-                                                  color: Color(0xff676767),
+                                    Container(
+                                      // autogroups9pcgSa (3AwYY2pucGT1ZZCpNzs9PC)
+                                      width: 76 * fem,
+                                      height: 40 * fem,
+                                      child: Stack(
+                                        children: [
+                                          Positioned(
+                                            // codepHt (67:381)
+                                            left: 0 * fem,
+                                            top: 0 * fem,
+                                            child: Align(
+                                              child: SizedBox(
+                                                width: 40 * fem,
+                                                height: 20 * fem,
+                                                child: Text(
+                                                  'Code'.tr(),
+                                                  style: SafeGoogleFont(
+                                                    'Inter',
+                                                    fontSize: 16 * ffem,
+                                                    fontWeight: FontWeight.w400,
+                                                    height: 1.2272726297 * ffem / fem,
+                                                    letterSpacing: -0.32 * fem,
+                                                    color: Color(0xff676767),
+                                                  ),
                                                 ),
                                               ),
                                             ),
                                           ),
-                                        ),
-                                        Positioned(
-                                          // v62 (67:388)
-                                          left: 0 * fem,
-                                          top: 15 * fem,
-                                          child: Align(
-                                            child: SizedBox(
-                                              width: 76 * fem,
-                                              height: 25 * fem,
-                                              child: Text(
-                                                '${StudentManager.currentUser?.code}',
-                                                style: SafeGoogleFont(
-                                                  'Inter',
-                                                  fontSize: 20 * ffem,
-                                                  fontWeight: FontWeight.w600,
-                                                  height: 1.2272726059 * ffem / fem,
-                                                  letterSpacing: -0.4 * fem,
-                                                  color: Color(0xff000000),
+                                          Positioned(
+                                            // v62 (67:388)
+                                            left: 0 * fem,
+                                            top: 15 * fem,
+                                            child: Align(
+                                              child: SizedBox(
+                                                width: 76 * fem,
+                                                height: 25 * fem,
+                                                child:  StudentManager.currentUser?.id != null
+                                                ?Text(
+                                                  '${StudentManager.currentUser?.code}',
+                                                  style: SafeGoogleFont(
+                                                    'Inter',
+                                                    fontSize: 20 * ffem,
+                                                    fontWeight: FontWeight.w600,
+                                                    height: 1.2272726059 * ffem / fem,
+                                                    letterSpacing: -0.4 * fem,
+                                                    color: Color(0xff000000),
+                                                  ),
+                                                )
+                                               : Text(
+                                                  '22',
+                                                  style: SafeGoogleFont(
+                                                    'Inter',
+                                                    fontSize: 20 * ffem,
+                                                    fontWeight: FontWeight.w600,
+                                                    height: 1.2272726059 * ffem / fem,
+                                                    letterSpacing: -0.4 * fem,
+                                                    color: Color(0xff000000),
+                                                  ),
                                                 ),
                                               ),
                                             ),
                                           ),
-                                        ),
-                                      ],
+
+
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                    SizedBox(height: 5,),
+                                    Center(child: Text("My course"))
+
+                                  ],
+                                ),
                               ),
                             ),
                           ],

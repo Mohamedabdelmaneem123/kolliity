@@ -10,6 +10,7 @@ import '../../features/login/logOut/logout screen.dart';
 import '../../features/login/login_-screen.dart';
 import '../../features/nav-eng.dart';
 import '../../features/profiledata-eng.dart';
+import '../../features/room/room_UI/in_ROOM.dart';
 import '../../features/start_screen.dart';
 import '../../features/student/addnew_student/add_view.dart';
 
@@ -31,7 +32,7 @@ class AppRoutes {
   static const String productScreen = "productScreen";
   static const String termsScreen = "termsScreen";
   static const String notificationScreen = "notificationScreen";
-  static const String complaintScreen = "complaintScreen";
+  static const String room = "room";
   static const String options = "rateScreen";
   static const String addStudent = "addStudent";
   static const String askElhamalDoctorScreen = "askElhamalDoctorScreen";
@@ -52,15 +53,15 @@ class AppRoutes {
        case profile:
         return appPage(Landing());
       case profileData:
-        return appPage(Profiledata_Eng());
+        return appPage(Profiledata_Eng(user_name: '', full_Name: '',));
       case Out:
         return appPage(const LogOut());
       case options:
         return appPage(NavBar_Eng());
       case addStudent:
         return appPage( AddNewStudent(onAdd: (Student ) {  },));
-      // case notificationScreen:
-      //   return appPage(const NotificationPage());
+      case room:
+        return appPage( Room());
       // case askElhamalDoctorScreen:
       //   return appPage(const AskElhamalDoctor());
       // case verificationCodeScreen:

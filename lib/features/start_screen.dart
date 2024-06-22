@@ -17,23 +17,14 @@ class StartScreen extends StatefulWidget {
 }
 
 class _StartScreenState extends State<StartScreen> {
-  Future<void> _checkLoginStatus() async {
-
-
-
-    if (PrefManager.currentUser?.token != null) {
-      // User is logged in, navigate to profile screen
-      UI.pushWithRemove(AppRoutes.profileData);
-
-    } else {
-      // User is not logged in, navigate to login screen
-      UI.pushWithRemove(AppRoutes.splashScreen);
-    }
-  }
   @override
   void initState() {
-    Timer(const Duration(seconds: 2), () async {
-      _checkLoginStatus();
+    Timer(const Duration(seconds: 3), () async {
+      if(PrefManager.currentUser?.token  != null){
+        UI.pushWithRemove(AppRoutes.profileData);
+      } else {
+        UI.pushWithRemove(AppRoutes.splashScreen);
+      }
     });
     super.initState();
   }

@@ -10,6 +10,7 @@ import 'package:kolliity/shared/app_size.dart';
 import 'package:kolliity/shared/constants/themes.dart';
 import 'package:kolliity/shared/generic_cubit/generic_cubit.dart';
 import 'package:kolliity/shared/localization/app_localization.dart';
+import 'package:kolliity/shared/prefs/pref_manager.dart';
 import 'package:kolliity/shared/providers/language_provider.dart';
 import 'package:kolliity/shared/util/app_routes.dart';
 import 'package:provider/provider.dart';
@@ -30,6 +31,7 @@ GlobalKey<NavigatorState> navigatorKey = GlobalKey();
 void main() async {
 
   await GetStorage.init();
+  await PrefManager.init();
   await CacheHelper.init();
   bool? isdark = CacheHelper.getBoolData(key: 'isdark');
   WidgetsFlutterBinding.ensureInitialized();

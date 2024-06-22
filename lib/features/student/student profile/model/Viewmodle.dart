@@ -7,24 +7,22 @@ import 'package:kolliity/shared/generic_cubit/generic_cubit.dart';
 import '../../../../shared/models/failure.dart';
 
 
-
 class HomeModel {
-
   HomeRepository repository = HomeRepository();
-  GenericCubit<Map<String, dynamic>?> homeCubit = GenericCubit(null);
-  GenericCubit<Profile> profile = GenericCubit(Profile as Profile);
+  GenericCubit<Map<String, dynamic>?> homeCubit = GenericCubit<Map<String, dynamic>?>(null);
+  GenericCubit<Profile?> profile = GenericCubit<Profile?>(null);
 
-
-
-
-  getHomeData() async{
+  getHomeData() async {
     homeCubit.onLoadingState();
     try {
       final result = await repository.getHomeData();
       Profile home = Profile.fromJson(result["data"]);
-      homeCubit.onUpdateData(home as Map<String, dynamic>?);
+      homeCubit.onUpdateData(result); // Update with raw result if homeCubit expects Map<String, dynamic>?
+      profile.onUpdateData(home); // Update profile separately
     } on Failure catch (e) {
       homeCubit.onErrorState(e);
     }
   }
-  }
+}
+
+

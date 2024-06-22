@@ -5,12 +5,14 @@ import 'package:kolliity/features/student/student_list/view/student_list.dart';
 import 'package:kolliity/features/studentcourses_eng.dart';
 import 'package:kolliity/features/units.dart';
 import 'package:kolliity/shared/extentions/string_extensions.dart';
+import 'package:kolliity/shared/prefs/pref_manager.dart';
 import 'package:kolliity/shared/util/app_routes.dart';
 import 'package:kolliity/shared/util/ui.dart';
 
 import '../shared/app_size.dart';
 import 'changepassword.dart';
 import 'chat bot/chat _screen/chat_bot.dart';
+import 'course/course list/course list.dart';
 import 'doctor/doctor_list/views/doctor_list.dart';
 import 'language/change_language.dart';
 
@@ -28,8 +30,8 @@ class NavBar_Eng extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: [
           UserAccountsDrawerHeader(
-            accountName: Text(''),
-            accountEmail: Text(''),
+            accountName: Text('${PrefManager.currentUser?.userName}'),
+            accountEmail: Text('${PrefManager.currentUser?.email}'),
             currentAccountPicture: CircleAvatar(),
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -68,7 +70,7 @@ class NavBar_Eng extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.padding),
             title: Text(
-              'change password'.tr(),
+              'The Room'.tr(),
               style: SafeGoogleFont(
                 'Inter',
                 fontSize: 22 * ffem,
@@ -166,6 +168,26 @@ class NavBar_Eng extends StatelessWidget {
           ),
           Divider(),
           ListTile(
+            leading: Icon(Icons.bookmark_border),
+            title: Text(
+              'Courses'.tr(),
+              style: SafeGoogleFont(
+                'Inter',
+                fontSize: 22 * ffem,
+                fontWeight: FontWeight.w600,
+                height: 1.2272726206 * ffem / fem,
+                letterSpacing: -0.52 * fem,
+                color: Color(0xff013267),
+              ),
+            ),
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return CourseListScreen();
+              }));
+            },
+          ),
+          Divider(),
+          ListTile(
             leading: Icon(Icons.settings),
             title: Text(
               'settings'.tr(),
@@ -181,26 +203,6 @@ class NavBar_Eng extends StatelessWidget {
             onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
                 return Setting_Eng();
-              }));
-            },
-          ),
-          Divider(),
-          ListTile(
-            leading: Icon(Icons.bookmark_border),
-            title: Text(
-              'Courses'.tr(),
-              style: SafeGoogleFont(
-                'Inter',
-                fontSize: 22 * ffem,
-                fontWeight: FontWeight.w600,
-                height: 1.2272726206 * ffem / fem,
-                letterSpacing: -0.52 * fem,
-                color: Color(0xff013267),
-              ),
-            ),
-            onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return Chatbot1();
               }));
             },
           ),
