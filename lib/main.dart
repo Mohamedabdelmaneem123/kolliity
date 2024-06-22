@@ -29,14 +29,14 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 GlobalKey<NavigatorState> navigatorKey = GlobalKey();
 void main() async {
-
-  await GetStorage.init();
+  WidgetsFlutterBinding.ensureInitialized();
   await PrefManager.init();
+  print(PrefManager.currentUser?.token);
+  await GetStorage.init();
   await CacheHelper.init();
   bool? isdark = CacheHelper.getBoolData(key: 'isdark');
   WidgetsFlutterBinding.ensureInitialized();
   bool isLoggedIn = await _checkLoginState();
-
 
   runApp(
     MultiProvider(
@@ -133,7 +133,7 @@ class MyApp extends StatelessWidget {
                 backgroundColor: Colors.black26,
                 unselectedItemColor: Colors.grey,
               ),
-              textTheme:  TextTheme(bodyText1: TextStyle(
+              textTheme:  TextTheme(titleLarge: TextStyle(
                   fontWeight:FontWeight.w900,
                   color: Colors.white
               ))

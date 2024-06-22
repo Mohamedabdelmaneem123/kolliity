@@ -18,7 +18,7 @@ class PrefUtils {
 
   static Future<Map<String, dynamic>?> getJson(String key) async {
     String? temp = (await getSharedPref()).getString(key);
-    // return temp.isNullOrEmpty ? null : jsonDecode(temp!);
+    return jsonDecode(temp??"{}");
   }
 
   static Future<bool> setString(String key, String data) async {

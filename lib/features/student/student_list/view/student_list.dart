@@ -1668,7 +1668,7 @@ class StudentListItem extends StatelessWidget {
                               // Handle details button press
                             },
                             style: ElevatedButton.styleFrom(
-                              primary: Colors.grey,
+                              backgroundColor: Colors.grey,
                             ),
                             child: Text('تفاصيل', overflow: TextOverflow.ellipsis),
                           ),
@@ -1681,7 +1681,7 @@ class StudentListItem extends StatelessWidget {
                               // Handle delete button press
                             },
                             style: ElevatedButton.styleFrom(
-                              primary: Colors.red,
+                              backgroundColor: Colors.red,
                             ),
                             child: Text('حذف', overflow: TextOverflow.ellipsis),
                           ),

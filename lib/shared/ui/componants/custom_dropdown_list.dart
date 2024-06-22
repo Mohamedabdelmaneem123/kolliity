@@ -82,7 +82,7 @@ class _CustomDropdownListState<T> extends State<CustomDropdownList<T>>
             padding: style.padding,
             backgroundColor: style.backgroundColor,
             elevation: style.elevation,
-            primary: style.primaryColor,
+            // primary: style.primaryColor,
             shape: style.shape as OutlinedBorder,
           ),
           onPressed: _toggleDropdown,

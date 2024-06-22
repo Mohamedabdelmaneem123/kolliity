@@ -20,7 +20,7 @@ class _StartScreenState extends State<StartScreen> {
   @override
   void initState() {
     Timer(const Duration(seconds: 3), () async {
-      if(PrefManager.currentUser?.token  != null){
+      if(PrefManager.currentUser?.token != null){
         UI.pushWithRemove(AppRoutes.profileData);
       } else {
         UI.pushWithRemove(AppRoutes.splashScreen);

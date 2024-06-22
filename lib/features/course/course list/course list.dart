@@ -81,7 +81,7 @@ class CourseDetailsScreen extends StatelessWidget {
                               // Handle doctor unassign button press
                             },
                             style: ElevatedButton.styleFrom(
-                              primary: Colors.red,
+                              backgroundColor: Colors.red,
                             ),
                             child: Center(child: Text('الغاء تعيين هذا الدكتور')),
                           ),
@@ -110,7 +110,7 @@ class CourseDetailsScreen extends StatelessWidget {
                               // Handle doctor unassign button press
                             },
                             style: ElevatedButton.styleFrom(
-                              primary: Colors.grey,
+                              backgroundColor: Colors.grey,
                             ),
                             child: Center(child: Text('اضافة معيد')),
                           ),
@@ -135,7 +135,7 @@ class CourseDetailsScreen extends StatelessWidget {
                         // Handle doctor unassign button press
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.grey,
+                        backgroundColor: Colors.grey,
                       ),
                       child: Text('اضافة'),
                     ),
@@ -163,7 +163,7 @@ class CourseDetailsScreen extends StatelessWidget {
                                   UI.pushWithRemove(AppRoutes.room);
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  primary: Colors.grey,
+                                  backgroundColor: Colors.grey,
                                 ),
                                 child: Text('دخول '),
                               ),
@@ -173,7 +173,7 @@ class CourseDetailsScreen extends StatelessWidget {
                                   // Handle doctor unassign button press
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  primary: Colors.white,
+                                  backgroundColor: Colors.white,
                                 ),
                                 child: Text('تعديل ',style: TextStyle(color: Colors.black),),
                               ),
@@ -183,7 +183,7 @@ class CourseDetailsScreen extends StatelessWidget {
                                   // Handle doctor unassign button press
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  primary: Colors.red,
+                                  backgroundColor: Colors.red,
                                 ),
                                 child: Text(' حذف'),
                               ),
@@ -303,7 +303,7 @@ class _CourseListScreenState extends State<CourseListScreen> {
                           _showCourseDetails(filteredCourses[index]);
                         },
                         style: ElevatedButton.styleFrom(
-                          primary: Colors.grey,
+                          backgroundColor: Colors.grey,
                         ),
                         child: Text('تفاصيل'),
                       ),

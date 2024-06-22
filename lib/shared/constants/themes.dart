@@ -62,7 +62,7 @@ class AppTheme{
         backgroundColor: Colors.black26,
         unselectedItemColor: Colors.grey,
       ),
-      textTheme: TextTheme(bodyText1: TextStyle(
+      textTheme: TextTheme(titleLarge: TextStyle(
           fontWeight:FontWeight.w900,
           color: Colors.white
       ))

@@ -1466,22 +1466,18 @@ class _DoctorListState extends State<DoctorList> {
     filteredStudents = doctors;
   }
 
-
   void _searchStudent(String query) {
-    setState(() {
-      filteredStudents = doctors
-          .where((student) => student.username.toLowerCase().contains(query.toLowerCase()))
-          .toList();
-    });
+    final String? username = String.fromEnvironment(query);
+    if (username != null) {
+      setState(() {
+        filteredStudents = doctors.where((doctors) => doctors.username == username).toList();
+      });
+    } else {
+      setState(() {
+        filteredStudents = doctors;
+      });
+    }
   }
-
-  void _removeStudent(Doctor doctor) {
-    setState(() {
-      doctors.remove(doctor);
-      _searchStudent(searchController.text); // Update filtered list based on current search query
-    });
-  }
-
 
   @override
   Widget build(BuildContext context) {
@@ -1497,7 +1493,7 @@ class _DoctorListState extends State<DoctorList> {
                 topRight: Radius.circular(AppSize.r30),
               ),
             ),
-            builder: (_) =>  AddNewStudent(onAdd: (Student ) {  },),
+            builder: (_) => AddNewStudent(),
           );
         },
             icon: Icon(Icons.add))
@@ -1529,11 +1525,7 @@ class _DoctorListState extends State<DoctorList> {
                           _searchStudent(searchController.text);
                         },
                       ),
-
                     ),
-                    onChanged: (value) {
-                      _searchStudent(value);
-                    },
                   ),
                 ),
               ),
@@ -1541,7 +1533,7 @@ class _DoctorListState extends State<DoctorList> {
                 child: ListView.builder(
                   itemCount: filteredStudents.length,
                   itemBuilder: (context, index) {
-                    return StudentListItem(doctor: filteredStudents[index],onRemove: _removeStudent);
+                    return StudentListItem(doctor: filteredStudents[index]);
                   },
                 ),
               ),
@@ -1555,9 +1547,8 @@ class _DoctorListState extends State<DoctorList> {
 
 class StudentListItem extends StatelessWidget {
   final Doctor doctor;
-  final Function(Doctor) onRemove;
 
-  StudentListItem({required this.doctor, required this.onRemove});
+  StudentListItem({required this.doctor});
 
   @override
   Widget build(BuildContext context) {
@@ -1588,7 +1579,7 @@ class StudentListItem extends StatelessWidget {
                             // Handle details button press
                           },
                           style: ElevatedButton.styleFrom(
-                            primary: Colors.grey,
+                            backgroundColor: Colors.grey,
                           ),
                           child: Text('تفاصيل', overflow: TextOverflow.ellipsis),
                         ),
@@ -1597,11 +1588,10 @@ class StudentListItem extends StatelessWidget {
                       Flexible(
                         child: ElevatedButton(
                           onPressed: () {
-                            onRemove(doctor);
                             // Handle delete button press
                           },
                           style: ElevatedButton.styleFrom(
-                            primary: Colors.red,
+                            backgroundColor: Colors.red,
                           ),
                           child: Text('حذف', overflow: TextOverflow.ellipsis),
                         ),
@@ -1618,5 +1608,14 @@ class StudentListItem extends StatelessWidget {
       ),
 
     );
+  }
+}
+
+class AddNewStudent extends StatelessWidget {
+  const AddNewStudent({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
   }
 }

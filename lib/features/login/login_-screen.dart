@@ -286,8 +286,7 @@ class _Login_EngState extends State<Login_Eng> {
                               } else if (state is GenericUpdatedState) {
                                 print("state.data");
                                 print(state.data);
-                                UserModel user =
-                                UserModel.fromJson(state.data!);
+                                UserModel user = UserModel.fromJson(state.data!);
                                 PrefManager.setCurrentUser(user);
                                 UI.pushWithRemove(
                                     AppRoutes.profileData);
